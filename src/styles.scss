@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'assets/variables.scss';
+
+.dark-red {
+    color: $dark-red;
+}
+
+.blue-grey {
+    color: $blue-grey;
+}
+
+.dark-grey {
+    color: $dark-grey;
+}
+
+.off-white {
+    color: $off-white;
+}
+
+.dark-red-bg {
+    background-color: $dark-red;
+}
+
+.blue-grey-bg {
+    background-color: $blue-grey;
+}
+
+.dark-grey-bg {
+    background-color: $dark-grey;
+}
+
+.off-white-bg {
+    background-color: $off-white;
+}
+
+.dark-red-border {
+    border: 1px solid $dark-red;
+}
+
+.blue-grey-border {
+    border: 1px solid $blue-grey;
+}
+
+.dark-grey-border {
+    border: 1px solid $dark-grey;
+}
+
+.off-white-border {
+    border: 1px solid $off-white;
+}
