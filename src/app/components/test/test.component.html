@@ -1,0 +1,5 @@
+<div class="background-box blue-grey-bg"></div>
+
+<div class="words-wrapper">
+    <span class="single-word" *ngFor="let word of currentWordList; let i = index" [class.active-word]="i === currentIndex">{{word}} </span>
+</div>

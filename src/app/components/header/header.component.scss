@@ -3,8 +3,10 @@
     height: 70px;
     display: flex;
     justify-content: space-between;
+    position: fixed;
     align-items: center;
     padding: 0 25px;
+    top: 0;
 
     .logo-wrapper {
         font-size: 38px;
