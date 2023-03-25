@@ -3,3 +3,13 @@
 <div class="words-wrapper">
     <span class="single-word" *ngFor="let word of currentWordList; let i = index" [class.active-word]="i === currentIndex">{{word}} </span>
 </div>
+
+<div class="current-word-input-wrapper">
+    <label for="current-word">Type here</label>
+    <div class="current-word-input">
+        <input #inputField autocorrect="off" autocapitalize="off" name="current-word" [maxlength]="currentWordList[currentIndex].length" [(ngModel)]="currentWordInput" (ngModelChange)="currentWordInputChanged()">
+        <span class="current-word-text" [innerHTML]="currentWordHTML"></span>
+    </div>
+</div>
+
+<!-- {{timerValue}} -->
