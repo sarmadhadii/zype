@@ -1,4 +1,5 @@
 export interface IConfidence {
-    confidenceValue: number, 
+    successfulAttempts: number, 
+    attemptedAmount: number,
     allowed: boolean
 }

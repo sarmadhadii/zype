@@ -69,7 +69,7 @@
             justify-content: center;
             align-items: center;
             padding-bottom: 5px;
-            pointer-events: none;
+            // pointer-events: none;
             background-color: $off-white;
             box-shadow: 0 1px 5px 0px rgba(#000000, 0.5);
             font-weight: 400;
@@ -78,4 +78,128 @@
         }
     }
 
+}
+
+.lower-info-wrapper {
+    width: 100%;
+    padding: 10px 35px;
+    .timer-wrapper, .info-wrapper {
+        width: 50%;
+    }
+
+    .timer-wrapper {
+        font-size: 55px;
+        font-weight: 200;
+        font-family: 'Bitter';
+        .timer-seconds {
+            font-size: 35px;
+            font-weight: 300;
+        }
+    }
+
+    .info-wrapper {
+        text-align: right;
+        .single-value {
+            font-weight: 300;
+            font-family: 'Bitter';
+            text-align: right;
+            font-size: 18px;
+        }
+    }
+}
+
+.active-letters-wrapper {
+    width: calc(100% - 70px);
+    border-radius: 5px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    padding-bottom: 4px;
+    span {
+        text-align: center;
+        display: grid;
+        place-items: center;
+        font-size: 20px;
+        font-weight: 200;
+        &.letter-span {
+            width: 24px;
+        }
+    }
+}
+
+.results-header-section {
+    height: 125px;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    h1 {
+        font-family: 'Bitter';
+        font-weight: 300;
+        text-align: center;
+        font-size: 34px;
+        margin-top: 25px;
+    }
+}
+
+.results-section {
+    box-shadow: 0 4px 4px 0 rgba($color: $dark-grey, $alpha: 0.5);
+    width: 85%;
+    margin: 20px auto;
+    min-height: 100%;
+    border-radius: 3px;
+
+    .score-section {
+        font-size: 50px;
+        font-family: 'Bitter';
+        font-weight: 200;
+        width: 100%;
+        margin: auto;
+        padding-top: 10px;
+        text-align: center;
+        .wps {
+            font-weight: 300;
+            font-size: 20px;
+        }
+    }
+
+    .info-section {
+        padding-bottom: 30px;
+        .info-section-table {
+            width: 95%;
+            margin: 10px auto;
+            font-family: 'Bitter';
+            th {
+                font-weight: 500;
+                padding-left: 5px;
+                color: $dark-grey;
+            }
+            
+            td {
+                padding-right: 5px;
+                font-weight: 300;
+                color: $blue-grey;
+                text-align: end;
+                font-size: 18px;
+            }
+        }
+    }
+
+    .repeat-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        button {
+            outline: none;
+            border: none;
+            border-radius: 3px;
+            padding: 7px 16px 8px;
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-family: 'Bitter';
+            font-weight: 300;
+        }
+    }
 }

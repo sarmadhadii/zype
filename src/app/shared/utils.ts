@@ -52,7 +52,7 @@ export const dummyUser: IUser = {
     email: 'sarmadhadi10@gmail.com',
     username: 'sarmadhadi',
     analytics: {
-        average: 32,
+        averageSpeed: 32,
         played: 50,
         scores: [],
         letterConfidences: {}
@@ -64,9 +64,12 @@ export const generateConfidences: any = () => {
     const alphabets = 'etaoinsrhldcwypgvkbmzfuxjq';
     for (let i = 0; i < alphabets.length; i++) {
         obj[alphabets[i]] = {
-            confidenceValue: 50, 
-            allowed: (i <= 5) ? true : false
+            successfulAttempts: 0, 
+            allowed: (i <= 5) ? true : false,
+            attemptedAmount: 0
         }
     }
     return obj;
 }
+
+export const fullAlphabet: string = 'abcdefghijklmnopqrstuvwxyz';
