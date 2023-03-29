@@ -1,15 +1,65 @@
 <div class="background-box blue-grey-bg"></div>
 
-<div class="words-wrapper">
-    <span class="single-word" *ngFor="let word of currentWordList; let i = index" [class.active-word]="i === currentIndex">{{word}} </span>
-</div>
-
-<div class="current-word-input-wrapper">
-    <label for="current-word">Type here</label>
-    <div class="current-word-input">
-        <input #inputField autocorrect="off" autocapitalize="off" name="current-word" [maxlength]="currentWordList[currentIndex].length" [(ngModel)]="currentWordInput" (ngModelChange)="currentWordInputChanged()">
-        <span class="current-word-text" [innerHTML]="currentWordHTML"></span>
+<ng-container *ngIf="!showResults">
+    <div class="words-wrapper">
+        <span class="single-word" *ngFor="let word of currentWordList; let i = index" [class.active-word]="i === currentIndex">{{word}} </span>
     </div>
-</div>
+    
+    <div class="current-word-input-wrapper">
+        <label for="current-word">Click here and start typing</label>
+        <div class="current-word-input" (click)="selectInputField()">
+            <input *ngIf="currentWordList?.[currentIndex]" autofocus type="text" inputmode="text" id="word-input-field" #inputField autocorrect="off" autocomplete="false" autocapitalize="off" name="current-word" [(ngModel)]="currentWordInput" (ngModelChange)="currentWordInputChanged()">
+            <span class="current-word-text" [innerHTML]="currentWordHTML"></span>
+        </div>
+    </div>
 
-<!-- {{timerValue}} -->
+    <div class="lower-info-wrapper d-flex justify-content-center align-items-center">
+        <div class="timer-wrapper dark-grey">{{timerValue}}<span class="timer-seconds">s</span></div>
+        <div class="info-wrapper dark-grey d-flex flex-column">
+            <div class="single-value accuracy-value">Accuracy: {{(currentTestScore.totalCorrectlyAttemptedAlphabets / currentTestScore.totalAttemptedAlphabets | percent) || '0%' }}</div>
+            <div class="single-value speed-value">WPM: {{currentTestScore.totalWords ? (currentTestScore.totalWords * (60 / (30 - timerValue)) | number: '1.0-0') : '0'}}</div>
+        </div>
+    </div>
+
+    <div class="active-letters-wrapper off-white-bg blue-grey-border">
+        <ng-container *ngFor="let letter of activeLetters; let last = last">
+            <span class="letter-span"> {{letter}} </span><span> {{last ? '': ' | '}} </span>
+        </ng-container>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="showResults">
+    <div class="results-header-section off-white">
+        <h1>Your <br> Results</h1>
+    </div>
+    <div class="results-section off-white-bg">
+        <div class="score-section">
+            {{currentTestScore.totalWords * 2}}<span class="wps">wps</span>
+        </div>
+        <div class="info-section">
+            <table class="info-section-table">
+                <tr>
+                  <th>Words completed</th>
+                  <td>{{currentTestScore.totalWords}}</td>
+                </tr>
+                <tr>
+                  <th>Total Time</th>
+                  <td>30s</td>
+                </tr>
+                <tr>
+                  <th>Mistakes</th>
+                  <td>{{currentTestScore.totalAttemptedAlphabets - currentTestScore.totalCorrectlyAttemptedAlphabets}}</td>
+                </tr>
+                <tr>
+                  <th>Accuracy</th>
+                  <td>{{currentTestScore.percentage}}%</td>
+                </tr>
+              </table>
+        </div>
+
+        <div class="repeat-section">
+            <button class="blue-grey-bg off-white shadow" (click)="retakeTest();">Retake <fa-icon [icon]="faRepeat"></fa-icon></button>
+        </div>
+    </div>
+</ng-container>
+

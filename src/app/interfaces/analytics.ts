@@ -1,7 +1,7 @@
 import { IConfidence } from "./confidence";
 import { IScore } from "./score";
 export interface IAnalytics {
-    average: number, 
+    averageSpeed: number, 
     played: number, 
     scores: IScore[],
     letterConfidences: { [key: string]: IConfidence }
