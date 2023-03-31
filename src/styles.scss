@@ -49,3 +49,10 @@
 .off-white-border {
     border: 1px solid $off-white;
 }
+
+.z-shadow {
+    box-shadow: 0 2px 4px 0 rgba($color: $dark-grey, $alpha: 0.5);
+    // box-shadow: 0 1px 5px 0px rgba(#000000, 0.5);
+}
+
+
