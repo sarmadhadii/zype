@@ -81,7 +81,7 @@ export class TestComponent implements OnInit {
             return;
         }
 
-        const lastInput = this.currentWordInput[this.currentWordInput.length - 1]; //gets us the last alphabets for testing
+        const lastInput = this.currentWordInput[this.currentWordInput.length - 1]; //gets us the last alphabet for testing
         
         if (this.currentWordInput.length) {
             this.generateScores(lastInput);
@@ -111,6 +111,19 @@ export class TestComponent implements OnInit {
             this.incorrectlyWrittenAlphabet = comparingAlphabet;
         }
 
+        this.generateDisplayedWordHTML(fullWord);
+    }
+
+    public startTimer(): void {
+        timer(0, 1000).pipe(
+            takeWhile(() => this.timerValue > 0),
+            tap(() => this.reduceTimerValue())
+        ).subscribe(() => {
+            this.timerStarted = true;
+        })
+    }
+
+    public generateDisplayedWordHTML(fullWord: string): void {
         let html = '';
         for (let i = 0; i < this.correctlyWrittenWord.length; i++) {
             html += `<span class="blue-grey">${this.correctlyWrittenWord[i]}</span>`
@@ -126,20 +139,13 @@ export class TestComponent implements OnInit {
         this.currentWordHTML = html;
     }
 
-    public startTimer(): void {
-        timer(0, 1000).pipe(
-            takeWhile(() => this.timerValue > 0),
-            tap(() => this.reduceTimerValue())
-        ).subscribe(() => {
-            this.timerStarted = true;
-        })
-    }
-
     public checkBackspace(): boolean {
         // hacky way to check for backspace... but works so leaving in for now... 
         if (this.previousWord.length > this.currentWordInput.length) {
             this.currentWordInput = this.previousWord;
-            this.inputFieldElem.nativeElement.value = this.currentWordInput;
+            if (this.inputFieldElem?.nativeElement) {
+                this.inputFieldElem.nativeElement.value = this.currentWordInput;
+            }
             return true;
         }
         return false;
@@ -211,7 +217,12 @@ export class TestComponent implements OnInit {
         this.currentWordList = [];
         setTimeout(() => {
             this.initWordList();
+            this.generateDisplayedWordHTML(this.currentWordList[0]);
         }, 0);
+        
+        setTimeout(() => {
+            this.selectInputField();
+        }, 100)
     }
     
 }

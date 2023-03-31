@@ -71,7 +71,6 @@
             padding-bottom: 5px;
             // pointer-events: none;
             background-color: $off-white;
-            box-shadow: 0 1px 5px 0px rgba(#000000, 0.5);
             font-weight: 400;
             font-family: 'Open Sans';
             font-size: 32px;
@@ -144,7 +143,6 @@
 }
 
 .results-section {
-    box-shadow: 0 4px 4px 0 rgba($color: $dark-grey, $alpha: 0.5);
     width: 85%;
     margin: 20px auto;
     min-height: 100%;
