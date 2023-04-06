@@ -13,7 +13,7 @@ export class LoaderService {
         this.loading = true;
     }
 
-    public endLoading(): void {
+    public stopLoading(): void {
         this.loading = false;
     }
 }

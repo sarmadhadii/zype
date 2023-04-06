@@ -1,0 +1,54 @@
+.whole-wrapper {
+    min-height: calc(100vh - 70px);
+    margin-top: 70px;
+    .top-header {
+        flex: 0 1 100px;
+        display: grid;
+        place-items: center;
+        h1 {
+            font-weight: 200;
+            font-size: 40px;
+        }
+    }
+    
+    .form-wrapper {
+        position: relative;
+        width: 100%;
+        padding: 30px 10% 96px;
+        flex: 1 1 auto;
+    
+        .single-field-wrapper {
+            margin: 10px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+    
+            label {
+                font-weight: 300;
+                font-family: 'Bitter';
+                font-size: 14px;
+            }
+            input {
+                height: 36px;
+                border-radius: 4px;
+    
+            }
+        }
+    
+        .bottom-buttons-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 12px;
+            position: absolute;
+            bottom: 30px;
+            width: 80%;
+        }
+    }
+    
+    .alternate-wrapper {
+        width: 90%;
+        text-align: center;
+        margin: 36px auto;
+        flex: 0 1 auto;
+    }
+}

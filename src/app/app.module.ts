@@ -10,6 +10,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoaderComponent } from './components/loader/loader.component';
 import { TestComponent } from './components/test/test.component';
 import { FormsModule } from '@angular/forms';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
+import { provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp } from 'firebase/app';
+
 
 @NgModule({
   declarations: [
@@ -24,9 +31,15 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [{
+    provide: FIREBASE_OPTIONS,
+    useValue: environment.firebase
+  }]
 })
 export class AppModule { }

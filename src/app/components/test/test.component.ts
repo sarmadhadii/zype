@@ -50,7 +50,7 @@ export class TestComponent implements OnInit {
         this.initWordList();
         // this.currentWordInput = this.currentWordList[this.currentIndex];
         setTimeout(() => {
-            this.loaderService.endLoading();
+            this.loaderService.stopLoading();
             this.selectInputField();
         }, 2000);
     }
