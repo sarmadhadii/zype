@@ -1,3 +1,9 @@
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
+import { FirebaseApp, firebaseApp$, provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp } from 'firebase/app';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -10,36 +16,31 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoaderComponent } from './components/loader/loader.component';
 import { TestComponent } from './components/test/test.component';
 import { FormsModule } from '@angular/forms';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { FIREBASE_OPTIONS } from '@angular/fire/compat';
-import { environment } from 'src/environments/environment';
-import { provideFirebaseApp } from '@angular/fire/app';
-import { initializeApp } from 'firebase/app';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    MenuComponent,
-    LoginComponent,
-    LoaderComponent,
-    TestComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FontAwesomeModule,
-    FormsModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore()),
-  ],
-  bootstrap: [AppComponent],
-  providers: [{
-    provide: FIREBASE_OPTIONS,
-    useValue: environment.firebase
-  }]
+    imports: [
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideAuth(() => getAuth()),
+        provideFirestore(() => getFirestore()),
+        BrowserModule,
+        AppRoutingModule,
+        FontAwesomeModule,
+        FormsModule,
+    ],
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        MenuComponent,
+        LoginComponent,
+        LoaderComponent,
+        TestComponent
+    ],
+    bootstrap: [AppComponent],
+    providers: [{
+        provide: FIREBASE_OPTIONS,
+        useValue: environment.firebase
+    }, ]
 })
-export class AppModule { }
+export class AppModule { 
+}

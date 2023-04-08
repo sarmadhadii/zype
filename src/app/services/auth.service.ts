@@ -1,33 +1,33 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { createUserWithEmailAndPassword, deleteUser, getAuth, onAuthStateChanged, signInWithEmailAndPassword, user } from '@angular/fire/auth';
-import { Firestore } from '@angular/fire/firestore';
-import { CollectionReference, collection, doc, getDoc, getFirestore, query, setDoc, where } from 'firebase/firestore';
+import { Auth, createUserWithEmailAndPassword, deleteUser, getAuth, signInWithEmailAndPassword, user } from '@angular/fire/auth';
 import { IUser } from '../interfaces/user';
-import { generateConfidences } from '../shared/utils';
 import { UserService } from './user.service';
 import { DataService } from './data.service';
-import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Router } from '@angular/router';
 import { LoaderService } from './loader.service';
+import { FirebaseApp } from '@angular/fire/app';
 
 
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class AuthService {
 
-    public loggedInUser$ =  new BehaviorSubject<any>(null);
-    public usersCollection: CollectionReference;
+    public loggedInUser$ = new BehaviorSubject<any>(null);
 
     constructor(
-        public firestore: Firestore,
         public userService: UserService,
         public dataService: DataService,
         public loaderService: LoaderService,
-        public router: Router
+        public router: Router,
+        public firebaseApp: FirebaseApp,
+        public firebaseAuth: Auth
     ) {
-        this.usersCollection = collection(getFirestore(), 'users');
+    }
+    
+    public initUserChecking(): void {
         user(getAuth()).subscribe(value => {
             if (!value) {
                 this.router.navigateByUrl('/login')
@@ -43,7 +43,6 @@ export class AuthService {
                 }
             }
         });
-
     }
 
     public signUp(email: string, password: string, username: string): Promise<void> {
@@ -68,8 +67,8 @@ export class AuthService {
         return new Promise((resolve, reject) => {
             signInWithEmailAndPassword(getAuth(), email, password).then((user) => {
                 this.dataService.getUserFromUid(user.user.uid).then((user) => {
-                    if (user) { 
-                        this.userService.user = user; 
+                    if (user) {
+                        this.userService.user = user;
                     }
                     resolve();
                 }).catch(err => reject(err));
