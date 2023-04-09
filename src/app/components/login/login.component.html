@@ -1,1 +1,39 @@
-<p>login works!</p>
+<div class="d-flex flex-column whole-wrapper">
+    <div class="top-header">
+        <h1 class="dark-grey bitter">{{isLogin ? 'Login' : 'Signup'}}</h1>
+    </div>
+
+    <div class="form-wrapper blue-grey-bg">
+        <div class="single-field-wrapper" *ngIf="!isLogin">
+            <label class="off-white" for="username">Username</label>
+            <input placeholder="Username" class="dark-grey z-form-field" type="text" name="username"
+                [(ngModel)]="formInput.username">
+        </div>
+
+        <div class="single-field-wrapper">
+            <label class="off-white" for="email">Email</label>
+            <input placeholder="Email" class="dark-grey z-form-field" type="text" name="email"
+                [(ngModel)]="formInput.email">
+        </div>
+
+        <div class="single-field-wrapper">
+            <label class="off-white" for="password">Password</label>
+            <input placeholder="Password" class="dark-grey z-form-field" type="text" name="password"
+                [(ngModel)]="formInput.password">
+        </div>
+
+        <div class="bottom-buttons-wrapper">
+            <button (click)="formSubmitted()" class="dark-grey-bg off-white z-button">{{ isLogin ? 'Login' : 'Signup' }}</button>
+        </div>
+
+    </div>
+
+    <div class="alternate-wrapper">
+        <p class="mb-2">
+            {{ isLogin ? 'Don\'t have an account?' : 'Already have an account?' }}
+        </p>
+        <button (click)="isLogin = !isLogin;" class="blue-grey-bg off-white z-button">{{isLogin ? 'Signup' :
+            'Login'}}</button>
+    </div>
+
+</div>

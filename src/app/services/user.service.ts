@@ -7,17 +7,15 @@ import { dummyUser, generateConfidences } from '../shared/utils';
 })
 export class UserService {
 
-    public user: IUser = dummyUser;
+    public user: IUser = {} as IUser;
     protected alphabets = 'etaoinsrhldcwypgvkbmzfuxjq';
 
-    constructor() { 
-        this.user.analytics.letterConfidences = generateConfidences();
-    }
+    constructor() { }
 
     public getAllowedAlphabets(): string[] {
         const allowedAlphabets: string[] = [];
         for (let i = 0; i < this.alphabets.length; i++) {
-            if (this.user.analytics.letterConfidences[this.alphabets[i]].allowed) {
+            if (this.user!.analytics.letterConfidences[this.alphabets[i]].allowed) {
                 allowedAlphabets.push(this.alphabets[i]);
             }
         }

@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<div class="remaining-components-wrapper">
+<div class="remaining-components-wrapper" [class.invisible]="loaderService.loading">
     <router-outlet></router-outlet>
 </div>
 

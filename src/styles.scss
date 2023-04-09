@@ -52,7 +52,40 @@
 
 .z-shadow {
     box-shadow: 0 2px 4px 0 rgba($color: $dark-grey, $alpha: 0.5);
-    // box-shadow: 0 1px 5px 0px rgba(#000000, 0.5);
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.d-contents {
+    display: contents;
+}
+
+.z-form-field {
+    height: 36px;
+    border-radius: 4px;
+    color: $dark-grey;
+    font-family: 'Open Sans';
+    font-size: 13px;
+    outline: none;
+    border: none;
+    padding: 0 10px;
+    &::placeholder {
+        color: #888888;
+        font-family: 'Open Sans';
+    }
+}
+
+.z-button {
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    height: 36px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Bitter';
+    padding: 0 16px 3px;
 }
 
 
