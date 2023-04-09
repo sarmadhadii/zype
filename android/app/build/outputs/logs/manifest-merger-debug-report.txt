@@ -94,6 +94,8 @@ MERGED from [androidx.startup:startup-runtime:1.0.0] /home/sarmad/.gradle/caches
 		ADDED from /home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:6:9-35
 	android:theme
 		ADDED from /home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:11:9-40
+	android:usesCleartextTraffic
+		ADDED from [:capacitor-cordova-android-plugins] /home/sarmad/my-stuff/zype/android/capacitor-cordova-android-plugins/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:18-53
 activity#com.zype.app.MainActivity
 ADDED from /home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:13:9-26:20
 	android:label

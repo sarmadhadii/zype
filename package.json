@@ -28,6 +28,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.2.1",
     "@fortawesome/free-regular-svg-icons": "^6.2.1",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "astral-regex": "^2.0.0",
     "bootstrap": "^5.2.3",
     "firebase": "^9.9.1",
     "primeicons": "^6.0.1",

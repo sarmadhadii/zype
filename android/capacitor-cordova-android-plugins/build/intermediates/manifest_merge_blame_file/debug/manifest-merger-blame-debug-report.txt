@@ -9,8 +9,9 @@
 8        android:targetSdkVersion="32" />
 8-->/home/sarmad/my-stuff/zype/android/capacitor-cordova-android-plugins/src/main/AndroidManifest.xml
 9
-10    <application>
+10    <application android:usesCleartextTraffic="true" >
 10-->/home/sarmad/my-stuff/zype/android/capacitor-cordova-android-plugins/src/main/AndroidManifest.xml:5:1-7:15
+10-->/home/sarmad/my-stuff/zype/android/capacitor-cordova-android-plugins/src/main/AndroidManifest.xml:5:15-50
 11    </application>
 12
 13</manifest>
