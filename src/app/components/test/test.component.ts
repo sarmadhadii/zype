@@ -2,10 +2,11 @@ import { Component, OnInit, ViewChild, asNativeElements } from '@angular/core';
 import { faRepeat } from '@fortawesome/free-solid-svg-icons';
 import { Observable, generate, takeWhile, tap, timer } from 'rxjs';
 import { IConfidence } from 'src/app/interfaces/confidence';
+import { DataService } from 'src/app/services/data.service';
 import { LoaderService } from 'src/app/services/loader.service';
 import { UserService } from 'src/app/services/user.service';
 import { WordsService } from 'src/app/services/words.service';
-import { fullAlphabet, generateConfidences } from 'src/app/shared/utils';
+import { fullAlphabet, generateConfidences, toTwoDecimalPlaces } from 'src/app/shared/utils';
 
 @Component({
   selector: 'app-test',
@@ -27,6 +28,7 @@ export class TestComponent implements OnInit {
     public correctlyWrittenWord: string = '';
     public incorrectlyWrittenAlphabet: string = '';
     public activeLetters: string[] = ['e', 'o', 't', 'i', 'a', 'n'];
+    public letterConfidencesSidebar: boolean = false;
     public currentTestScore = {
         percentage: 0, 
         totalWords: 0,
@@ -42,17 +44,14 @@ export class TestComponent implements OnInit {
         public wordsService: WordsService,
         public userService: UserService,
         public loaderService: LoaderService,
+        public dataService: DataService
     ) {
-        this.loaderService.startLoading();
+        this.loaderService.stopLoading();
     }
 
     public ngOnInit(): void {
         this.initWordList();
-        // this.currentWordInput = this.currentWordList[this.currentIndex];
-        setTimeout(() => {
-            this.loaderService.stopLoading();
-            this.selectInputField();
-        }, 2000);
+        this.selectInputField();
     }
 
     public initWordList(): void {
@@ -167,7 +166,9 @@ export class TestComponent implements OnInit {
     public generateScores(lastAttempt: string): void {
         if (lastAttempt) {
             this.currentTestScore.totalAttemptedAlphabets++;
-            this.currentTestScore.letterConfidences[lastAttempt].attemptedAmount++;
+            if (this.currentTestScore?.letterConfidences?.[lastAttempt]?.allowed) {
+                this.currentTestScore.letterConfidences[lastAttempt].attemptedAmount++;
+            }
             if (lastAttempt === this.currentWordList[this.currentIndex][this.currentWordInput.length - 1]) {
                 this.currentTestScore.totalCorrectlyAttemptedAlphabets++;
                 this.currentTestScore.letterConfidences[lastAttempt].successfulAttempts++;
@@ -189,13 +190,19 @@ export class TestComponent implements OnInit {
     public completeTest(): void {
         this.currentTestScore.speed = (this.currentTestScore.totalWords * 2);
         this.currentTestScore.percentage = Math.floor((this.currentTestScore.totalCorrectlyAttemptedAlphabets / this.currentTestScore.totalAttemptedAlphabets) * 100);
-        this.userService.user.analytics.averageSpeed = Math.round(((this.userService.user.analytics.averageSpeed * this.userService.user.analytics.played) + this.currentTestScore.speed) / this.userService.user.analytics.played + 1);
         this.userService.user.analytics.played++;
+        if (this.userService.user.analytics.played === 0) {
+            this.userService.user.analytics.averageSpeed = this.currentTestScore.speed;
+        } else {
+            this.userService.user.analytics.averageSpeed = Math.round(((this.userService.user.analytics.averageSpeed * (this.userService.user.analytics.played - 1)) + this.currentTestScore.speed) / this.userService.user.analytics.played);
+        }
         for (let letter of fullAlphabet) {
             this.userService.user.analytics.letterConfidences[letter].attemptedAmount += this.currentTestScore.letterConfidences[letter].attemptedAmount;
             this.userService.user.analytics.letterConfidences[letter].successfulAttempts += this.currentTestScore.letterConfidences[letter].successfulAttempts;
         }
         this.showResults = true;
+        this.dataService.updateUser(this.userService.user);
+
     }
 
     public selectInputField(): void {

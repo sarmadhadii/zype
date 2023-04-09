@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, doc, getDoc, getDocs, query, setDoc, where } from '@angular/fire/firestore';
+import { Firestore, collection, doc, getDoc, getDocs, query, setDoc, updateDoc, where } from '@angular/fire/firestore';
 import { CollectionReference, getFirestore } from 'firebase/firestore';
 import { IUser } from '../interfaces/user';
 import { generateNewUser } from '../shared/utils';
@@ -31,6 +31,24 @@ export class DataService {
         return new Promise((resolve, reject) => {
             getDoc(doc(collection(getFirestore(), 'users'), `u-${uid}`)).then(userData => {
                 resolve(userData ? userData.data() as IUser : null);
+            }).catch(err => reject(err));
+        })
+    }
+
+    public updateUser(user: IUser): Promise<boolean> {
+        const docRef = doc(collection(getFirestore(), 'users'), `u-${user.id}`);
+        return new Promise((resolve, reject) => {
+            updateDoc(docRef, { analytics: user.analytics }).then(() => {
+                resolve(true);
+            }).catch(err => reject(err));
+        })
+    }
+
+    public updateUserAnalytics(user: IUser): Promise<boolean> {
+        const docRef = doc(collection(getFirestore(), 'users'), `u-${user.id}`);
+        return new Promise((resolve, reject) => {
+            updateDoc(docRef, { analytics: user.analytics }).then(() => {
+                resolve(true);
             }).catch(err => reject(err));
         })
     }

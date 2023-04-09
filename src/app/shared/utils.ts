@@ -67,7 +67,7 @@ export const generateConfidences = () => {
     const alphabets = 'etaoinsrhldcwypgvkbmzfuxjq';
     for (let i = 0; i < alphabets.length; i++) {
         obj[alphabets[i]] = {
-            successfulAttempts: 0, 
+            successfulAttempts: 0,
             allowed: (i <= 5) ? true : false,
             attemptedAmount: 0
         }
@@ -92,8 +92,16 @@ export const generateNewUser = (email: string, username: string, uid: string): I
 export const canActivate: CanActivateFn = () => {
     const authService = inject(AuthService);
     return authService.isLoggedInForRoutes();
-  };
-  
+};
+
+export const toTwoDecimalPlaces = (num: number): number => {
+    return (Math.round(num * 100) / 100);
+}
+
+export const toPercentage = (num: number): number => {
+    return (Math.round(num * 100));
+}
+
 export const isAuthenticated: CanActivateChildFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => canActivate(route, state);
 
 export const fullAlphabet: string = 'abcdefghijklmnopqrstuvwxyz';

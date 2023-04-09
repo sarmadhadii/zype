@@ -59,7 +59,13 @@
 
         <div class="repeat-section">
             <button class="blue-grey-bg off-white shadow" (click)="retakeTest();">Retake <fa-icon [icon]="faRepeat"></fa-icon></button>
+            <button class="blue-grey-bg off-white shadow" (click)="letterConfidencesSidebar = true;">Show Confidences <fa-icon [icon]="faRepeat"></fa-icon></button>
         </div>
     </div>
+
+    <p-sidebar [(visible)]="letterConfidencesSidebar" position="right">
+        <h3>Right Sidebar</h3>
+    </p-sidebar>
+    
 </ng-container>
 

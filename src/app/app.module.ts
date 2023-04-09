@@ -16,6 +16,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoaderComponent } from './components/loader/loader.component';
 import { TestComponent } from './components/test/test.component';
 import { FormsModule } from '@angular/forms';
+import { LetterConfidencesComponent } from './components/letter-confidences/letter-confidences.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SidebarModule } from 'primeng/sidebar';
 
 
 @NgModule({
@@ -26,7 +29,9 @@ import { FormsModule } from '@angular/forms';
         BrowserModule,
         AppRoutingModule,
         FontAwesomeModule,
+        BrowserAnimationsModule,
         FormsModule,
+        SidebarModule
     ],
     declarations: [
         AppComponent,
@@ -34,7 +39,8 @@ import { FormsModule } from '@angular/forms';
         MenuComponent,
         LoginComponent,
         LoaderComponent,
-        TestComponent
+        TestComponent,
+        LetterConfidencesComponent
     ],
     bootstrap: [AppComponent],
     providers: [{
