@@ -86,6 +86,33 @@
     font-weight: 500;
     font-family: 'Bitter';
     padding: 0 16px 3px;
+    &:disabled {
+        background-color: #c2c2c2;
+        color: #ffffff;
+    }
+}
+
+.z-toast {
+    right: 50% !important;
+    width: 92.5vw !important;
+    translate: 50% !important;
+    opacity: 1 !important;
+    .p-toast-message {
+        border: none !important;
+        border: 4px !important;
+        .p-toast-message-icon {
+            display: none;
+        }
+
+        .p-toast-message-content {
+            align-items: center;
+            padding: 0.75rem !important;
+            .p-toast-detail {
+                margin: 0 !important;
+            }
+        }
+
+    }
 }
 
 

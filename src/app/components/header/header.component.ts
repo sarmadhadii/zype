@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
+import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +12,10 @@ import { AuthService } from 'src/app/services/auth.service';
 export class HeaderComponent {
     public faBars = faBars;
 
-    constructor(public authService: AuthService){
-    }
+    constructor(
+        public authService: AuthService,
+        public loaderService: LoaderService,
+    ){ }
 
 
 }

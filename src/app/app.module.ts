@@ -18,7 +18,8 @@ import { TestComponent } from './components/test/test.component';
 import { FormsModule } from '@angular/forms';
 import { LetterConfidencesComponent } from './components/letter-confidences/letter-confidences.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidebarModule } from 'primeng/sidebar';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { SidebarModule } from 'primeng/sidebar';
         FontAwesomeModule,
         BrowserAnimationsModule,
         FormsModule,
-        SidebarModule
+        ToastModule
     ],
     declarations: [
         AppComponent,
@@ -43,10 +44,13 @@ import { SidebarModule } from 'primeng/sidebar';
         LetterConfidencesComponent
     ],
     bootstrap: [AppComponent],
-    providers: [{
-        provide: FIREBASE_OPTIONS,
-        useValue: environment.firebase
-    }, ]
+    providers: [
+        {
+            provide: FIREBASE_OPTIONS,
+            useValue: environment.firebase,
+        },
+        MessageService
+    ]
 })
 export class AppModule { 
 }

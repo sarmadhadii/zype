@@ -1,5 +1,5 @@
 
 <div class="whole-wrapper dark-grey-bg">
     <div class="logo-wrapper pointer off-white">ZYPE</div>
-    <fa-icon class="off-white pointer" [icon]="faBars" *ngIf="authService?.loggedInUser$ | async"></fa-icon>
+    <fa-icon class="off-white pointer" [icon]="faBars" *ngIf="(authService?.loggedInUser$ | async) && !loaderService.loading"></fa-icon>
 </div>

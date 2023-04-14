@@ -4,26 +4,26 @@
     </div>
 
     <div class="form-wrapper blue-grey-bg">
-        <div class="single-field-wrapper" *ngIf="!isLogin">
+        <div class="single-field-wrapper" [class.d-none]="isLogin">
             <label class="off-white" for="username">Username</label>
-            <input placeholder="Username" class="dark-grey z-form-field" type="text" name="username"
+            <input placeholder="Username" minlength="6" [required]="!isLogin" #usernameField="ngModel" class="dark-grey z-form-field" type="text" name="username"
                 [(ngModel)]="formInput.username">
         </div>
 
         <div class="single-field-wrapper">
             <label class="off-white" for="email">Email</label>
-            <input placeholder="Email" class="dark-grey z-form-field" type="text" name="email"
+            <input placeholder="Email" #emailField="ngModel" class="dark-grey z-form-field" type="email" email required name="email"
                 [(ngModel)]="formInput.email">
         </div>
 
         <div class="single-field-wrapper">
             <label class="off-white" for="password">Password</label>
-            <input placeholder="Password" class="dark-grey z-form-field" type="text" name="password"
+            <input placeholder="Password" required #passwordField="ngModel" class="dark-grey z-form-field" minlength="6" type="password" name="password"
                 [(ngModel)]="formInput.password">
         </div>
 
         <div class="bottom-buttons-wrapper">
-            <button (click)="formSubmitted()" class="dark-grey-bg off-white z-button">{{ isLogin ? 'Login' : 'Signup' }}</button>
+            <button (click)="formSubmitted()" class="dark-grey-bg off-white z-button" [disabled]="!passwordField.valid || !emailField.valid || (!isLogin && !usernameField.valid)">{{ isLogin ? 'Login' : 'Signup' }}</button>
         </div>
 
     </div>

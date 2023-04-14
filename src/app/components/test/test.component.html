@@ -2,7 +2,10 @@
 
 <ng-container *ngIf="!showResults">
     <div class="words-wrapper">
-        <span class="single-word" *ngFor="let word of currentWordList; let i = index" [class.active-word]="i === currentIndex">{{word}} </span>
+        <span class="single-word" *ngFor="let word of currentWordList; let i = index" [class.active-word]="i === currentIndex">
+            {{word}}
+            <span class="current-word-overlay" *ngIf="i === currentIndex">{{word}}</span>
+        </span>
     </div>
     
     <div class="current-word-input-wrapper">
@@ -59,13 +62,8 @@
 
         <div class="repeat-section">
             <button class="blue-grey-bg off-white shadow" (click)="retakeTest();">Retake <fa-icon [icon]="faRepeat"></fa-icon></button>
-            <button class="blue-grey-bg off-white shadow" (click)="letterConfidencesSidebar = true;">Show Confidences <fa-icon [icon]="faRepeat"></fa-icon></button>
         </div>
     </div>
-
-    <p-sidebar [(visible)]="letterConfidencesSidebar" position="right">
-        <h3>Right Sidebar</h3>
-    </p-sidebar>
     
 </ng-container>
 
