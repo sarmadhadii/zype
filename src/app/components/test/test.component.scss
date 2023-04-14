@@ -118,7 +118,7 @@
 .active-letters-wrapper {
     width: calc(100% - 70px);
     border-radius: 5px;
-    margin: 10px auto;
+    margin: 10px auto 3px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -134,6 +134,16 @@
             width: 24px;
         }
     }
+}
+
+.current-letters-label {
+    width: 100%;
+    color: $dark-grey;
+    font-weight: 300;
+    text-align: right;
+    padding-right: 35px;
+    font-family: 'Open Sans';
+    font-size: 13px;
 }
 
 .results-header-section {
