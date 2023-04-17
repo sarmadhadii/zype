@@ -6,7 +6,7 @@ import { DataService } from 'src/app/services/data.service';
 import { LoaderService } from 'src/app/services/loader.service';
 import { UserService } from 'src/app/services/user.service';
 import { WordsService } from 'src/app/services/words.service';
-import { fullAlphabet, generateConfidences, toTwoDecimalPlaces } from 'src/app/shared/utils';
+import { fullAlphabet, generateConfidences, recursiveDeepCopy, toTwoDecimalPlaces } from 'src/app/shared/utils';
 
 @Component({
   selector: 'app-test',
@@ -27,7 +27,7 @@ export class TestComponent implements OnInit {
     public timerStarted: boolean = false;
     public correctlyWrittenWord: string = '';
     public incorrectlyWrittenAlphabet: string = '';
-    public activeLetters: string[] = ['e', 'o', 't', 'i', 'a', 'n'];
+    public activeLetters: string[] = [];
     public letterConfidencesSidebar: boolean = false;
     public currentTestScore = {
         percentage: 0, 
@@ -50,6 +50,9 @@ export class TestComponent implements OnInit {
     }
 
     public ngOnInit(): void {
+        if (this.userService?.user?.analytics?.letterConfidences) {
+            this.activeLetters = this.userService.getAllowedAlphabets();
+        }
         this.initWordList();
         this.selectInputField();
     }
@@ -164,6 +167,7 @@ export class TestComponent implements OnInit {
     }
 
     public generateScores(lastAttempt: string): void {
+        console.log(recursiveDeepCopy(this.currentTestScore));
         if (lastAttempt) {
             this.currentTestScore.totalAttemptedAlphabets++;
             if (this.currentTestScore?.letterConfidences?.[lastAttempt]?.allowed) {
@@ -174,6 +178,7 @@ export class TestComponent implements OnInit {
                 this.currentTestScore.letterConfidences[lastAttempt].successfulAttempts++;
             }
         };
+        console.log(recursiveDeepCopy(this.currentTestScore));
     }
 
     public resetCurrentTestScore(): void {

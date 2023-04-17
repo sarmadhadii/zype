@@ -50,7 +50,7 @@ export class WordsService {
                 words.push(word);
                 totalLength += word.length + 1;
             }
-        } while ((totalLength <= 40));
+        } while ((totalLength <= 36));
 
         return words;
     }

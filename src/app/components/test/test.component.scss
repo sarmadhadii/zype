@@ -14,9 +14,9 @@
     font-weight: 300;
     color: $off-white;
     text-align: center;
-    width: 80%;
+    width: 90%;
     margin: auto;
-    padding-top: 25px;
+    padding-top: 18px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -24,18 +24,20 @@
 
     .single-word {
         position: relative;
-
-        .current-word-overlay {
-            position: absolute;
+        &::after {
+            display: block;
+            content: attr(title);
+            font-weight: 500;
+            height: 1px;
+            color: transparent;
+            overflow: hidden;
+            visibility: hidden;
+        }
+        
+        &.active-word {
             font-weight: 500;
             text-decoration: underline;
             text-underline-offset: 5px;
-            visibility: visible;
-            left: 0;
-        }
-
-        &.active-word {
-            visibility: hidden;
         }
     }
 }
@@ -44,7 +46,7 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    width: 270px;
+    width: 90vw;
     margin-top: 18px;
 
     label {
@@ -89,13 +91,13 @@
 
 .lower-info-wrapper {
     width: 100%;
-    padding: 10px 35px;
+    padding: 18px 5vw;
     .timer-wrapper, .info-wrapper {
         width: 50%;
     }
 
     .timer-wrapper {
-        font-size: 55px;
+        font-size: 50px;
         font-weight: 200;
         font-family: 'Bitter';
         .timer-seconds {
@@ -110,29 +112,32 @@
             font-weight: 300;
             font-family: 'Bitter';
             text-align: right;
-            font-size: 18px;
+            font-size: 16px;
         }
     }
 }
 
 .active-letters-wrapper {
-    width: calc(100% - 70px);
-    border-radius: 5px;
-    margin: 10px auto 3px;
+    width: calc(90vw);
+    margin: 0px auto 3px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
-    height: 40px;
-    padding-bottom: 4px;
+    line-height: 25px;
     span {
         text-align: center;
-        display: grid;
-        place-items: center;
-        font-size: 20px;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        aspect-ratio: 1/1;
+        background-color: $off-white;
+        border-radius: 4px;
+        width: 10vw;
+        margin: 0.45vw;
+        border: 0.5px solid rgb(156, 170, 202);
         font-weight: 200;
-        &.letter-span {
-            width: 24px;
-        }
     }
 }
 
@@ -140,8 +145,8 @@
     width: 100%;
     color: $dark-grey;
     font-weight: 300;
-    text-align: right;
-    padding-right: 35px;
+    text-align: left;
+    padding-left: 5vw;
     font-family: 'Open Sans';
     font-size: 13px;
 }
@@ -209,16 +214,5 @@
         width: 100%;
         display: flex;
         justify-content: center;
-        button {
-            outline: none;
-            border: none;
-            border-radius: 3px;
-            padding: 7px 16px 8px;
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            font-family: 'Bitter';
-            font-weight: 300;
-        }
     }
 }

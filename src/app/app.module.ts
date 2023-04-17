@@ -19,7 +19,9 @@ import { FormsModule } from '@angular/forms';
 import { LetterConfidencesComponent } from './components/letter-confidences/letter-confidences.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { MessageService } from 'primeng/api';
         FontAwesomeModule,
         BrowserAnimationsModule,
         FormsModule,
-        ToastModule
+        ToastModule,
+        OverlayPanelModule,
+        ConfirmDialogModule
     ],
     declarations: [
         AppComponent,
@@ -49,7 +53,8 @@ import { MessageService } from 'primeng/api';
             provide: FIREBASE_OPTIONS,
             useValue: environment.firebase,
         },
-        MessageService
+        MessageService,
+        ConfirmationService
     ]
 })
 export class AppModule { 

@@ -1,10 +1,9 @@
 <div class="background-box blue-grey-bg"></div>
 
 <ng-container *ngIf="!showResults">
-    <div class="words-wrapper">
+    <div class="words-wrapper" (click)="selectInputField()">
         <span class="single-word" *ngFor="let word of currentWordList; let i = index" [class.active-word]="i === currentIndex">
             {{word}}
-            <span class="current-word-overlay" *ngIf="i === currentIndex">{{word}}</span>
         </span>
     </div>
     
@@ -12,7 +11,7 @@
         <label for="current-word">Click here and start typing</label>
         <div class="current-word-input">
             <input *ngIf="currentWordList?.[currentIndex]" autofocus type="text" inputmode="text" id="word-input-field" #inputField autocorrect="off" autocomplete="false" autocapitalize="off" name="current-word" [(ngModel)]="currentWordInput" (ngModelChange)="currentWordInputChanged()">
-            <span class="current-word-text z-shadow"  (click)="selectInputField()" [innerHTML]="currentWordHTML"></span>
+            <span class="current-word-text z-shadow" (click)="selectInputField()" [innerHTML]="currentWordHTML"></span>
         </div>
     </div>
 
@@ -24,13 +23,12 @@
         </div>
     </div>
 
-    <div class="active-letters-wrapper off-white-bg blue-grey-border">
-        <ng-container *ngFor="let letter of activeLetters; let last = last">
-            <span class="letter-span"> {{letter}} </span><span> {{last ? '': ' | '}} </span>
+    <label class="current-letters-label mb-2">Current Letters ({{activeLetters.length || 0}})</label>
+    <div class="active-letters-wrapper">
+        <ng-container *ngFor="let letter of activeLetters;">
+            <span class="letter-span bitter">{{letter}}</span>
         </ng-container>
-    </div>
-    
-    <label class="current-letters-label">Current Letters</label>
+    </div>    
 </ng-container>
 
 <ng-container *ngIf="showResults">
@@ -63,7 +61,7 @@
         </div>
 
         <div class="repeat-section">
-            <button class="blue-grey-bg off-white shadow" (click)="retakeTest();">Retake <fa-icon [icon]="faRepeat"></fa-icon></button>
+            <button class="blue-grey-bg off-white shadow z-button mb-3" (click)="retakeTest();">Retake <fa-icon [icon]="faRepeat"></fa-icon></button>
         </div>
     </div>
     
