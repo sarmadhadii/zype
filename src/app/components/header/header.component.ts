@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { faBars, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { ConfirmationService } from 'primeng/api';
 import { AuthService } from 'src/app/services/auth.service';
+import { CommonService } from 'src/app/services/common.service';
 import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class HeaderComponent {
     constructor(
         public authService: AuthService,
         public loaderService: LoaderService,
-        public primengConfirmService: ConfirmationService
+        public primengConfirmService: ConfirmationService,
+        public commonService: CommonService
     ){ }
 
 

@@ -16,12 +16,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoaderComponent } from './components/loader/loader.component';
 import { TestComponent } from './components/test/test.component';
 import { FormsModule } from '@angular/forms';
-import { LetterConfidencesComponent } from './components/letter-confidences/letter-confidences.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { LetterConfidenceComponent } from './components/letter-confidence/letter-confidence.component';
+import { TooltipModule } from 'primeng/tooltip';
+import { SidebarModule } from 'primeng/sidebar';
+import { NumberSuffixPipe } from './pipes/number-suffix.pipe';
 
 
 @NgModule({
@@ -36,7 +39,9 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
         FormsModule,
         ToastModule,
         OverlayPanelModule,
-        ConfirmDialogModule
+        ConfirmDialogModule,
+        SidebarModule,
+        TooltipModule
     ],
     declarations: [
         AppComponent,
@@ -45,7 +50,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
         LoginComponent,
         LoaderComponent,
         TestComponent,
-        LetterConfidencesComponent
+        LetterConfidenceComponent,
+        NumberSuffixPipe
     ],
     bootstrap: [AppComponent],
     providers: [

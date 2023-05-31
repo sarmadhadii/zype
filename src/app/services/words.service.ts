@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { sourceText } from '../shared/utils';
+import { generalSourceText, letterDominantSourceTexts } from '../shared/source-texts';
+import { fullAlphabet } from '../shared/utils';
 
 @Injectable({
     providedIn: 'root'
 })
 export class WordsService {
-
-    public sourceText = sourceText;
 
     constructor() { }
 
@@ -15,11 +14,16 @@ export class WordsService {
      * Takes a hard coded text as source text. Can be found in `utils.ts` 
      * @param allowedAlphabets an array of characters that are allowed (['b', 'e', 'r'])
      * @param maxLength the maximum possible length of single word
-     * @param numberOfWords number of words to return
+     * @param weakAlphabet the weakest alphabet of the user. If provided, the source text will be generated using the general source text + the source text of the weakest alphabet
      * @returns array of words
      */
-    public generateWords(allowedAlphabets: string[], maxLength = 6) {
-        const alphabets = this.sourceText.split('');
+    public generateWords(allowedAlphabets: string[], maxLength = 6, weakAlphabet?: string) {
+        let alphabets: string[] = [];
+        if (weakAlphabet && fullAlphabet.includes(weakAlphabet)) {
+            alphabets = (generalSourceText + letterDominantSourceTexts[weakAlphabet]).split('');
+        } else {
+            alphabets = generalSourceText.split('');
+        }
         const markovChain: any = {};
         const words: string[] = [];
         let totalLength: number = 0;
@@ -46,7 +50,7 @@ export class WordsService {
                     Math.floor(Math.random() * markovChain[currentLetter].length)
                     ];
             }
-            if (word.length >= 3) {
+            if (word.length >= 3 && word !== words.at(-1)) {
                 words.push(word);
                 totalLength += word.length + 1;
             }

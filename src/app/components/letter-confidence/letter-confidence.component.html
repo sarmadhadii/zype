@@ -1,0 +1,17 @@
+
+<div class="whole-lc-wrapper">
+    <div class="info-wrapper">
+        <div class="single-info-row">
+            <div class="info-label">Attempted:</div>
+            <div class="info-value">{{letterData.attemptedAmount || 0 | numberSuffix}}</div>
+        </div>
+        <div class="single-info-row">
+            <div class="info-label">Correctly Attempted:</div>
+            <div class="info-value">{{letterData.successfulAttempts || 0 | numberSuffix}}</div>
+        </div>
+        <div class="single-info-row">
+            <div class="info-label">Accuracy:</div>
+            <div class="info-value">{{accuracyPercentage || 0}}%</div>
+        </div>
+    </div>
+</div>

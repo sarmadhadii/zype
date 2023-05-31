@@ -41,7 +41,7 @@ export class AuthService {
                             this.userService.user = user;
                             this.router.navigateByUrl('/')
                         }
-                    }).catch(err => console.error(err));
+                    }).catch(err => this.messagesService.showMessage(err.message, 'error', true));
                 }
             }
         });
