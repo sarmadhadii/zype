@@ -1,6 +1,10 @@
+import { IConfidence } from "./confidence"
+
 export interface IScore {
     date: Date, 
     speed: number,
-    metadata?: any
+    played: number,
+    metadata?: any,
+    letterConfidences: { [key: string]: IConfidence }
 
 }

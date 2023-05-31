@@ -21,4 +21,24 @@ export class UserService {
         }
         return allowedAlphabets;
     }
+
+    /**
+     * Checks user.analytics.letterConfidences and returns the letter with the lowest confidence
+     * @returns the letter with the lowest confidence
+     */
+    public getWeakestAlphabet(): string {
+        let weakestAlphabet = '';
+        let lowestConfidence = 100;
+        for (let i = 0; i < this.alphabets.length; i++) {
+            if (this.user!.analytics.letterConfidences[this.alphabets[i]].attemptedAmount === 0 && this.user!.analytics.letterConfidences[this.alphabets[i]].allowed) {
+                return this.alphabets[i];
+            }
+            const currentConfidencePercentage = (this.user!.analytics.letterConfidences[this.alphabets[i]].successfulAttempts / this.user!.analytics.letterConfidences[this.alphabets[i]].attemptedAmount) * 100;
+            if (currentConfidencePercentage < lowestConfidence) {
+                lowestConfidence = currentConfidencePercentage;
+                weakestAlphabet = this.alphabets[i];
+            }
+        }
+        return weakestAlphabet;
+    }
 }

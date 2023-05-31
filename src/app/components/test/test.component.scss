@@ -85,6 +85,16 @@
             font-family: 'Open Sans';
             font-size: 28px;
         }
+        
+        .next-word-text {
+            font-weight: 400;
+            font-family: "Open Sans";
+            font-size: 23px;
+            color: #888888;
+            position: absolute;
+            right: 20px;
+            padding-top: 3px;
+        }
     }
 
 }
@@ -124,31 +134,59 @@
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
+    position: relative;
     line-height: 25px;
-    span {
+    .letter-span {
         text-align: center;
         font-size: 16px;
         display: flex;
         justify-content: center;
         align-items: center;
         aspect-ratio: 1/1;
-        background-color: $off-white;
+        background-color: $dark-green;
         border-radius: 4px;
         width: 10vw;
         margin: 0.45vw;
-        border: 0.5px solid rgb(156, 170, 202);
-        font-weight: 200;
+        font-weight: 400;
+        max-width: 40px;
+        color: white;
+        text-shadow: 1px 0 $dark-grey, -1px 0 $dark-grey, 0 1px $dark-grey, 0 -1px $dark-grey,
+               1px 1px $dark-grey, -1px -1px $dark-grey, 1px -1px $dark-grey, -1px 1px $dark-grey;
+    }
+
+    &.letters-disabled::after {
+        top: 0;
+        left: 0;
+        content: '';
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        background-color: rgba($color: #ffffff, $alpha: 0.65);
     }
 }
 
 .current-letters-label {
     width: 100%;
-    color: $dark-grey;
+    color: #252323;
     font-weight: 300;
     text-align: left;
     padding-left: 5vw;
-    font-family: 'Open Sans';
+    font-family: "Open Sans";
     font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    i {
+        position: relative;
+        top: 1px;
+    }
+}
+
+.current-letters-sub-label {
+    padding: 0 5vw;
+    font-family: 'Bitter';
+    font-size: 11px;
 }
 
 .results-header-section {
@@ -214,5 +252,36 @@
         width: 100%;
         display: flex;
         justify-content: center;
+    }
+}
+
+.new-letter-whole-wrapper {
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20vh;
+
+    h1 {
+        font-weight: 400;
+        font-size: 34px;
+    }
+
+    h2 {
+        font-size: 22px;
+        text-align: center;
+        width: 85%;
+        margin: 5px auto 26px;
+        font-weight: 300;
+        color: $blue-grey;
+
+        .new-letter {
+            color: $dark-grey;
+            font-weight: 500;
+            text-decoration: underline;
+        }
     }
 }

@@ -99,6 +99,7 @@
     right: 50% !important;
     width: 92.5vw !important;
     translate: 50% !important;
+    z-index: 999999 !important;
     opacity: 1 !important;
     .p-toast-message {
         border: none !important;
@@ -132,6 +133,10 @@
     }
 }
 
+.letter-confidence-sidebar {
+    height: 50vh !important;
+}
+
 .z-confirm-dialog {
     width: 90vw;
     .p-dialog-header {
@@ -159,6 +164,37 @@
             }
         }
     }
+}
+
+.z-sidebar {
+    .p-sidebar-header {
+        font-size: 20px;
+        font-weight: 600;
+        font-family: 'Bitter';
+    }
+    .p-sidebar-content {
+        padding-right: 1.75rem !important;
+        padding-top: 1.5rem !important;
+    }
+
+    .sidebar-footer-info {
+        font-family: "Bitter";
+        font-size: 13px;
+        font-weight: 600;
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+        i.pi {
+            top: 2px;
+            position: relative;
+        }
+    }
+}
+
+.z-tooltip {
+    font-size: 12px !important;
+    font-family: 'Bitter' !important;
+    font-weight: 300 !important;
 }
 
 

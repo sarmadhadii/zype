@@ -32,7 +32,7 @@ export class LoginComponent {
             this.authService.signIn(this.formInput.email, this.formInput.password).then(() => {
                 this.loaderService.stopLoading();
             }).catch(err => {
-                console.log(err.code);
+                console.error(err.code);
                 const message = this.formatError(err.code);
                 this.loaderService.stopLoading();
                 this.messagesService.showMessage(message, 'error', true);
@@ -44,7 +44,7 @@ export class LoginComponent {
             }).then(() => {
                 this.loaderService.stopLoading();
             }).catch(err => {
-                console.log(err.code);
+                console.error(err.code);
                 const message = this.formatError(err.code);
                 this.loaderService.stopLoading();
                 this.messagesService.showMessage(message, 'error', true);

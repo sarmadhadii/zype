@@ -12,6 +12,9 @@
         <div class="current-word-input">
             <input *ngIf="currentWordList?.[currentIndex]" autofocus type="text" inputmode="text" id="word-input-field" #inputField autocorrect="off" autocomplete="false" autocapitalize="off" name="current-word" [(ngModel)]="currentWordInput" (ngModelChange)="currentWordInputChanged()">
             <span class="current-word-text z-shadow" (click)="selectInputField()" [innerHTML]="currentWordHTML"></span>
+            <span class="next-word-text" *ngIf="currentWordList?.[currentIndex + 1] || ((currentWordList.length -  currentIndex === 1) && nextWordList[0])">
+                {{currentWordList[currentIndex + 1] || nextWordList[0]}}
+            </span>
         </div>
     </div>
 
@@ -23,12 +26,15 @@
         </div>
     </div>
 
-    <label class="current-letters-label mb-2">Current Letters ({{activeLetters.length || 0}})</label>
-    <div class="active-letters-wrapper">
+    <label class="current-letters-label mb-2">
+        Current Letters ({{activeLetters.length || 0}})
+        <i class="pi pi-info-circle" tooltipStyleClass="z-tooltip" pInputText pTooltip="Brighter background color of the letter indicates a higher accuracy rate." tooltipEvent="focus" tabindex="0" tooltipPosition="top"></i>
+    </label>
+    <div class="active-letters-wrapper" [class.letters-disabled]="(commonService.testInProgress$ | async)">
         <ng-container *ngFor="let letter of activeLetters;">
-            <span class="letter-span bitter">{{letter}}</span>
+            <span class="letter-span bitter" *ngIf="userService?.user?.analytics?.letterConfidences?.[letter] as letterConfidence;" style="filter: brightness({{50 + ((letterConfidence.successfulAttempts / letterConfidence.attemptedAmount * 100) || 50)}}%);" (click)="showLetterConfidenceSidebar(letter)">{{letter}}</span>
         </ng-container>
-    </div>    
+    </div>  
 </ng-container>
 
 <ng-container *ngIf="showResults">
@@ -61,9 +67,35 @@
         </div>
 
         <div class="repeat-section">
-            <button class="blue-grey-bg off-white shadow z-button mb-3" (click)="retakeTest();">Retake <fa-icon [icon]="faRepeat"></fa-icon></button>
+            <button class="blue-grey-bg off-white shadow z-button mb-4" (click)="retakeTest();">Retake <fa-icon [icon]="faRepeat"></fa-icon></button>
         </div>
     </div>
     
 </ng-container>
 
+<ng-container *ngIf="newLetterCongratulation?.length && !showResults">
+    <div class="new-letter-whole-wrapper off-white-bg">
+        <h1 class="congrats-message-header bitter">
+            Congrats!
+        </h1>
+        <h2 class="congrats-message-text bitter">
+            You have unlocked a new letter: <span class="new-letter">{{newLetterCongratulation}}</span>
+        </h2>
+        <div class="continue-button">
+            <button class="blue-grey-bg off-white shadow z-button mb-3" (click)="newLetterCongratulation = ''; showResults = true;">Continue <fa-icon [icon]="faContinue"></fa-icon></button>
+        </div>
+    </div>
+</ng-container> 
+
+<p-sidebar styleClass="letter-confidence-sidebar z-sidebar" [(visible)]="letterConfidencesSidebar" position="bottom">
+    <ng-template pTemplate="header">Alphabet Stats - {{activeAlphabet | uppercase}}</ng-template>
+    <ng-template pTemplate="content">
+        <app-letter-confidence [letter]="activeAlphabet"></app-letter-confidence>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <span class="sidebar-footer-info">
+            <i class="pi pi-info-circle"></i>
+            You need > 75% accuracy and minimum 500 attempts on all existing letters to unlock a new one. 
+        </span>
+    </ng-template>
+</p-sidebar>
