@@ -32,7 +32,7 @@ export const recursiveDeepCopy: any = (o: any) => {
 };
 
 export const dummyUser: IUser = {
-    id: 'dummy-id-for-now',
+    _id: 'dummy-id-for-now',
     email: 'sarmadhadi10@gmail.com',
     username: 'sarmadhadi',
     analytics: {
@@ -60,7 +60,7 @@ export const generateNewUser = (email: string, username: string, uid: string): I
     return <IUser>{
         email: email,
         username: username,
-        id: uid,
+        _id: uid,
         analytics: {
             averageSpeed: 0,
             played: 0,

@@ -34,6 +34,7 @@ export class TestComponent implements OnInit {
     public letterConfidencesSidebar: boolean = false;
     public activeAlphabet: string = '';
     public newLetterCongratulation: string = '';
+    public progressTillNextLetter: number = 0;
     public currentTestScore = {
         percentage: 0, 
         totalWords: 0,
@@ -60,6 +61,7 @@ export class TestComponent implements OnInit {
             this.activeLetters = this.userService.getAllowedAlphabets();
             this.currentTestScore.letterConfidences = generateConfidences(this.activeLetters);
         }
+        this.progressTillNextLetter = this.userService.getTotalProgress();
         this.initNextWordList();
         this.initWordList();
         this.selectInputField();
@@ -247,7 +249,7 @@ export class TestComponent implements OnInit {
         //ending test and updating user
         this.checkIfNewAlphabetNeedsToBeAdded();
         this.commonService.stopTest();
-        this.dataService.updateUser(this.userService.user);
+        this.dataService.updateUserAnalytics(this.userService.user);
 
     }
 
@@ -262,6 +264,7 @@ export class TestComponent implements OnInit {
 
     public retakeTest(): void {
         this.activeLetters = this.userService.getAllowedAlphabets();
+        this.progressTillNextLetter = this.userService.getTotalProgress();
         this.resetCurrentTestScore();
         this.showResults = false;
         this.timerValue = 30;
@@ -287,7 +290,7 @@ export class TestComponent implements OnInit {
 
     /***
      * @description - This function checks if we can add a new alphabet to the allowed alphabets. We can add a new alphabet if:
-     * 1. Each letter has more than 500 attempts
+     * 1. Each letter has more than 250 attempts
      * 2. Each letter has more than 75% success rate
      */
 
@@ -297,7 +300,7 @@ export class TestComponent implements OnInit {
             const letterConfidence = this.userService.user.analytics.letterConfidences[alphabet];
             return (
                     ((letterConfidence.successfulAttempts / letterConfidence.attemptedAmount * 100) >= 75) && 
-                    (letterConfidence.attemptedAmount >= 500)
+                    (letterConfidence.attemptedAmount >= 250)
                 );
         });
 

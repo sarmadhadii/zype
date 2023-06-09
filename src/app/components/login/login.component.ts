@@ -30,6 +30,7 @@ export class LoginComponent {
         this.loaderService.startLoading();
         if (this.isLogin) {
             this.authService.signIn(this.formInput.email, this.formInput.password).then(() => {
+                this.goToTest();
                 this.loaderService.stopLoading();
             }).catch(err => {
                 console.error(err.code);
@@ -42,6 +43,7 @@ export class LoginComponent {
             this.authService.signUp(this.formInput.email, this.formInput.password, this.formInput.username).catch(err => {
                 console.error(err.message);
             }).then(() => {
+                this.goToTest();
                 this.loaderService.stopLoading();
             }).catch(err => {
                 console.error(err.code);
@@ -69,5 +71,9 @@ export class LoginComponent {
             default:
                 return code;
         }
+    }
+
+    public goToTest(): void {
+        this.router.navigateByUrl('/test');
     }
 }
