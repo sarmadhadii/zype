@@ -99,6 +99,11 @@
 
 }
 
+.progress-till-next-letter-wrapper {
+    width: 90vw;
+    margin: 0 auto;
+}
+
 .lower-info-wrapper {
     width: 100%;
     padding: 18px 5vw;
@@ -134,6 +139,7 @@
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
+    row-gap: 3vw;
     position: relative;
     line-height: 25px;
     .letter-span {
@@ -143,15 +149,28 @@
         justify-content: center;
         align-items: center;
         aspect-ratio: 1/1;
-        background-color: $dark-green;
         border-radius: 4px;
         width: 10vw;
-        margin: 0.45vw;
+        margin: 0 0.8vw 0 2.8vw;
         font-weight: 400;
         max-width: 40px;
         color: white;
         text-shadow: 1px 0 $dark-grey, -1px 0 $dark-grey, 0 1px $dark-grey, 0 -1px $dark-grey,
                1px 1px $dark-grey, -1px -1px $dark-grey, 1px -1px $dark-grey, -1px 1px $dark-grey;
+    }
+
+    .letter-progress-bar-wrapper {
+        width: 6px;
+        border: 1px solid $dark-grey;
+        position: relative;
+        border-radius: 2px;
+        .letter-progress-bar {
+            width: 4px;
+            background-color: $dark-green;
+            position: absolute;
+            bottom: 0;
+            border-radius: 0px;
+        }
     }
 
     &.letters-disabled::after {

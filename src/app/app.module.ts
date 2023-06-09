@@ -25,6 +25,9 @@ import { LetterConfidenceComponent } from './components/letter-confidence/letter
 import { TooltipModule } from 'primeng/tooltip';
 import { SidebarModule } from 'primeng/sidebar';
 import { NumberSuffixPipe } from './pipes/number-suffix.pipe';
+import { HttpClientModule } from '@angular/common/http';
+import { ProgressBarModule } from 'primeng/progressbar';
+
 
 
 @NgModule({
@@ -41,7 +44,9 @@ import { NumberSuffixPipe } from './pipes/number-suffix.pipe';
         OverlayPanelModule,
         ConfirmDialogModule,
         SidebarModule,
-        TooltipModule
+        TooltipModule,
+        HttpClientModule,
+        ProgressBarModule
     ],
     declarations: [
         AppComponent,

@@ -197,4 +197,13 @@
     font-weight: 300 !important;
 }
 
+.z-progressbar {
+    .p-progressbar {
+        border-radius: 4px !important;
+        .p-progressbar-value {
+            background-color: $dark-grey !important;
+        }
+    }
+}
+
 
