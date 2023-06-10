@@ -1,0 +1,15 @@
+.info-wrapper {
+    display: flex;
+    flex-direction: column;
+    .single-info-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Bitter';
+        font-size: 17px !important;
+        .info-label {
+            font-weight: 600;
+        }
+    }
+}

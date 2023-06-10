@@ -51,7 +51,7 @@
 }
 
 .z-shadow {
-    box-shadow: 0 2px 4px 0 rgba($color: $dark-grey, $alpha: 0.5);
+    box-shadow: 0 2px 6px -2px rgba(37, 35, 35, 0.5);
 }
 
 .invisible {
@@ -80,12 +80,130 @@
 .z-button {
     outline: none;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     height: 36px;
     font-size: 14px;
     font-weight: 500;
     font-family: 'Bitter';
-    padding: 0 16px 3px;
+    padding: 0 16px;
+    &:disabled {
+        background-color: #c2c2c2;
+        color: #ffffff;
+    }
+    fa-icon {
+        margin-left: 6px;
+    }
+}
+
+.z-toast {
+    right: 50% !important;
+    width: 92.5vw !important;
+    translate: 50% !important;
+    z-index: 999999 !important;
+    opacity: 1 !important;
+    .p-toast-message {
+        border: none !important;
+        border: 4px !important;
+        .p-toast-message-icon {
+            display: none;
+        }
+
+        .p-toast-message-content {
+            align-items: center;
+            padding: 0.75rem !important;
+            .p-toast-detail {
+                margin: 0 !important;
+            }
+        }
+
+    }
+}
+
+.header-overlay-panel {
+    top: 45px !important;
+    left: auto !important;
+    right: 25px !important;
+    background-color: $off-white !important;
+    &::before, &::after {
+        display: none;
+    }
+
+    .p-overlaypanel-content {
+        padding: 0.5em !important;
+    }
+}
+
+.letter-confidence-sidebar {
+    height: 50vh !important;
+}
+
+.z-confirm-dialog {
+    width: 90vw;
+    .p-dialog-header {
+        padding-bottom: 0.5rem !important;
+        color: $dark-grey !important;
+    }
+    .p-confirm-dialog-message {
+        margin-left: 0 !important;
+        color: $dark-grey !important;
+    }
+    .p-dialog-footer {
+        button {
+            @extend .z-button;
+            box-shadow: none !important;
+            &:focus {
+                box-shadow: none !important;
+            }
+            &.p-confirm-dialog-reject {
+                background-color: $dark-red !important;
+                color: $off-white !important;
+            }
+            &.p-confirm-dialog-accept {
+                background-color: $blue-grey !important;
+                color: $off-white !important;
+            }
+        }
+    }
+}
+
+.z-sidebar {
+    .p-sidebar-header {
+        font-size: 20px;
+        font-weight: 600;
+        font-family: 'Bitter';
+    }
+    .p-sidebar-content {
+        padding-right: 1.75rem !important;
+        padding-top: 1.5rem !important;
+    }
+
+    .sidebar-footer-info {
+        font-family: "Bitter";
+        font-size: 13px;
+        font-weight: 600;
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+        i.pi {
+            top: 2px;
+            position: relative;
+        }
+    }
+}
+
+.z-tooltip {
+    font-size: 12px !important;
+    font-family: 'Bitter' !important;
+    font-weight: 300 !important;
+}
+
+.z-progressbar {
+    .p-progressbar {
+        border-radius: 4px !important;
+        .p-progressbar-value {
+            background-color: $dark-grey !important;
+        }
+    }
 }
 
 

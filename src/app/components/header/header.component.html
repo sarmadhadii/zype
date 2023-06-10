@@ -1,5 +1,18 @@
 
 <div class="whole-wrapper dark-grey-bg">
     <div class="logo-wrapper pointer off-white">ZYPE</div>
-    <fa-icon class="off-white pointer" [icon]="faBars" *ngIf="authService?.loggedInUser$ | async"></fa-icon>
+    <fa-icon class="off-white pointer" (click)="headerOverlayPanel.toggle($event)" [icon]="faBars" *ngIf="
+        (authService?.loggedInUser$ | async) && 
+        !loaderService.loading && 
+        !(commonService.testInProgress$ | async)
+    "></fa-icon>
+    
 </div>
+<p-overlayPanel #headerOverlayPanel styleClass="header-overlay-panel">
+    <div class="options-wrapper d-flex flex-column">
+        <button (click)="confirmLogout();" class="z-button off-white-bg dark-grey">
+            Logout
+            <fa-icon [icon]="faLogout"></fa-icon>
+        </button>
+    </div>
+</p-overlayPanel>

@@ -14,15 +14,26 @@
     font-weight: 300;
     color: $off-white;
     text-align: center;
-    width: 80%;
+    width: 90%;
     margin: auto;
-    padding-top: 25px;
+    padding-top: 18px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 6px;
 
     .single-word {
+        position: relative;
+        &::after {
+            display: block;
+            content: attr(title);
+            font-weight: 500;
+            height: 1px;
+            color: transparent;
+            overflow: hidden;
+            visibility: hidden;
+        }
+        
         &.active-word {
             font-weight: 500;
             text-decoration: underline;
@@ -35,7 +46,7 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    width: 270px;
+    width: 90vw;
     margin-top: 18px;
 
     label {
@@ -51,12 +62,12 @@
         input {
             outline: none;
             border: none;
-            height: 50px;
+            height: 44px;
             padding-bottom: 5px;
             text-align: center;
             width: 100%;
             color: $blue-grey;
-            border-radius: 4px;
+            border-radius: 12px;
         }
         
         .current-word-text {
@@ -69,25 +80,39 @@
             justify-content: center;
             align-items: center;
             padding-bottom: 5px;
-            // pointer-events: none;
             background-color: $off-white;
             font-weight: 400;
             font-family: 'Open Sans';
-            font-size: 32px;
+            font-size: 28px;
+        }
+        
+        .next-word-text {
+            font-weight: 400;
+            font-family: "Open Sans";
+            font-size: 23px;
+            color: #888888;
+            position: absolute;
+            right: 20px;
+            padding-top: 3px;
         }
     }
 
 }
 
+.progress-till-next-letter-wrapper {
+    width: 90vw;
+    margin: 0 auto;
+}
+
 .lower-info-wrapper {
     width: 100%;
-    padding: 10px 35px;
+    padding: 18px 5vw;
     .timer-wrapper, .info-wrapper {
         width: 50%;
     }
 
     .timer-wrapper {
-        font-size: 55px;
+        font-size: 50px;
         font-weight: 200;
         font-family: 'Bitter';
         .timer-seconds {
@@ -102,40 +127,85 @@
             font-weight: 300;
             font-family: 'Bitter';
             text-align: right;
-            font-size: 18px;
+            font-size: 16px;
         }
     }
 }
 
 .active-letters-wrapper {
-    width: calc(100% - 70px);
-    border-radius: 5px;
-    margin: 10px auto 3px;
+    width: calc(90vw);
+    margin: 0px auto 3px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
-    height: 40px;
-    padding-bottom: 4px;
-    span {
+    row-gap: 3vw;
+    position: relative;
+    line-height: 25px;
+    .letter-span {
         text-align: center;
-        display: grid;
-        place-items: center;
-        font-size: 20px;
-        font-weight: 200;
-        &.letter-span {
-            width: 24px;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        aspect-ratio: 1/1;
+        border-radius: 4px;
+        width: 10vw;
+        margin: 0 0.8vw 0 2.8vw;
+        font-weight: 400;
+        max-width: 40px;
+        color: white;
+        text-shadow: 1px 0 $dark-grey, -1px 0 $dark-grey, 0 1px $dark-grey, 0 -1px $dark-grey,
+               1px 1px $dark-grey, -1px -1px $dark-grey, 1px -1px $dark-grey, -1px 1px $dark-grey;
+    }
+
+    .letter-progress-bar-wrapper {
+        width: 6px;
+        border: 1px solid $dark-grey;
+        position: relative;
+        border-radius: 2px;
+        .letter-progress-bar {
+            width: 4px;
+            background-color: $dark-green;
+            position: absolute;
+            bottom: 0;
+            border-radius: 0px;
         }
+    }
+
+    &.letters-disabled::after {
+        top: 0;
+        left: 0;
+        content: '';
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        background-color: rgba($color: #ffffff, $alpha: 0.65);
     }
 }
 
 .current-letters-label {
     width: 100%;
-    color: $dark-grey;
+    color: #252323;
     font-weight: 300;
-    text-align: right;
-    padding-right: 35px;
-    font-family: 'Open Sans';
+    text-align: left;
+    padding-left: 5vw;
+    font-family: "Open Sans";
     font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    i {
+        position: relative;
+        top: 1px;
+    }
+}
+
+.current-letters-sub-label {
+    padding: 0 5vw;
+    font-family: 'Bitter';
+    font-size: 11px;
 }
 
 .results-header-section {
@@ -178,18 +248,21 @@
             width: 95%;
             margin: 10px auto;
             font-family: 'Bitter';
-            th {
-                font-weight: 500;
-                padding-left: 5px;
-                color: $dark-grey;
-            }
-            
-            td {
-                padding-right: 5px;
-                font-weight: 300;
-                color: $blue-grey;
-                text-align: end;
-                font-size: 18px;
+            tr {
+                border-bottom: 1px solid rgba($color: $blue-grey, $alpha: 0.25);
+                th {
+                    font-weight: 500;
+                    padding-left: 5px;
+                    color: $dark-grey;
+                }
+                
+                td {
+                    padding-right: 5px;
+                    font-weight: 300;
+                    color: $blue-grey;
+                    text-align: end;
+                    font-size: 18px;
+                }
             }
         }
     }
@@ -198,16 +271,36 @@
         width: 100%;
         display: flex;
         justify-content: center;
-        button {
-            outline: none;
-            border: none;
-            border-radius: 3px;
-            padding: 7px 16px 8px;
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            font-family: 'Bitter';
-            font-weight: 300;
+    }
+}
+
+.new-letter-whole-wrapper {
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20vh;
+
+    h1 {
+        font-weight: 400;
+        font-size: 34px;
+    }
+
+    h2 {
+        font-size: 22px;
+        text-align: center;
+        width: 85%;
+        margin: 5px auto 26px;
+        font-weight: 300;
+        color: $blue-grey;
+
+        .new-letter {
+            color: $dark-grey;
+            font-weight: 500;
+            text-decoration: underline;
         }
     }
 }

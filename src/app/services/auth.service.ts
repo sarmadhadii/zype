@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Auth, createUserWithEmailAndPassword, deleteUser, getAuth, signInWithEmailAndPassword, user } from '@angular/fire/auth';
+import { createUserWithEmailAndPassword, deleteUser, getAuth, signInWithEmailAndPassword, user } from '@angular/fire/auth';
 import { IUser } from '../interfaces/user';
 import { UserService } from './user.service';
 import { DataService } from './data.service';
 import { Router } from '@angular/router';
 import { LoaderService } from './loader.service';
+import { signOut } from 'firebase/auth';
+import { MessagesService } from './messages.service';
 import { FirebaseApp } from '@angular/fire/app';
 
 
@@ -22,8 +24,8 @@ export class AuthService {
         public dataService: DataService,
         public loaderService: LoaderService,
         public router: Router,
-        public firebaseApp: FirebaseApp,
-        public firebaseAuth: Auth
+        public messagesService: MessagesService,
+        public firebase: FirebaseApp
     ) {
     }
     
@@ -39,7 +41,7 @@ export class AuthService {
                             this.userService.user = user;
                             this.router.navigateByUrl('/')
                         }
-                    }).catch(err => console.error(err));
+                    }).catch(err => this.messagesService.showMessage(err.message, 'error', true));
                 }
             }
         });
@@ -88,5 +90,16 @@ export class AuthService {
 
     public isLoggedInForRoutes(): boolean {
         return this.loggedInUser$.getValue() ? true : false;
+    }
+
+    public logout(): void {
+        signOut(getAuth()).then(() => {
+            this.loggedInUser$.next(null);
+            this.userService.user = {} as IUser;
+        }).catch(err => {
+            this.messagesService.showMessage(err.message, 'error');
+        }).finally(() => {
+            this.router.navigateByUrl('/login');
+        })
     }
 }
