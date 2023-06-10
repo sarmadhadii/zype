@@ -1,7 +1,8 @@
 {
     "/api": {
-      "target": "http://localhost:3000",
-      "secure": false,
+      "target": "https://zype-backend.onrender.com",
+      "changeOrigin": true,
+        "secure": false,
         "pathRewrite": {
             "^/api": ""
         }

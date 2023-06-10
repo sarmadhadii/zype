@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, doc, getDoc, getDocs, query, setDoc, updateDoc, where } from '@angular/fire/firestore';
-import { CollectionReference, getFirestore } from 'firebase/firestore';
 import { IUser } from '../interfaces/user';
 import { generateNewUser } from '../shared/utils';
-import * as firebase from 'firebase/compat';
-import { environment } from 'src/environments/environment';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
