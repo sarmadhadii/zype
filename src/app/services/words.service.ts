@@ -50,7 +50,7 @@ export class WordsService {
                     Math.floor(Math.random() * markovChain[currentLetter].length)
                     ];
             }
-            if (word.length >= 3 && word !== words.at(-1)) {
+            if (word.length >= 3 && word !== words?.[words.length - 1]) {
                 words.push(word);
                 totalLength += word.length + 1;
             }

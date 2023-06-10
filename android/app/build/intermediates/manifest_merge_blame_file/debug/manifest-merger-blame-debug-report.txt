@@ -31,74 +31,73 @@
 21-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:9:9-54
 22        android:supportsRtl="true"
 22-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:10:9-35
-23        android:testOnly="true"
-24        android:theme="@style/AppTheme"
-24-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:11:9-40
-25        android:usesCleartextTraffic="true" >
-25-->[:capacitor-cordova-android-plugins] /home/sarmad/my-stuff/zype/android/capacitor-cordova-android-plugins/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:18-53
-26        <activity
-26-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:13:9-26:20
-27            android:name="com.zype.app.MainActivity"
-27-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:15:13-53
-28            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
-28-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:14:13-129
-29            android:exported="true"
-29-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:19:13-36
-30            android:label="@string/title_activity_main"
-30-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:16:13-56
-31            android:launchMode="singleTask"
-31-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:18:13-44
-32            android:theme="@style/AppTheme.NoActionBarLaunch" >
-32-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:17:13-62
-33            <intent-filter>
-33-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:21:13-24:29
-34                <action android:name="android.intent.action.MAIN" />
-34-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:22:17-69
-34-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:22:25-66
-35
-36                <category android:name="android.intent.category.LAUNCHER" />
-36-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:23:17-77
-36-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:23:27-74
-37            </intent-filter>
-38        </activity>
-39
-40        <provider
-41            android:name="androidx.core.content.FileProvider"
-41-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:29:13-62
-42            android:authorities="com.zype.app.fileprovider"
-42-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:30:13-64
-43            android:exported="false"
-43-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:31:13-37
-44            android:grantUriPermissions="true" >
-44-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:32:13-47
-45            <meta-data
-45-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:33:13-35:64
-46                android:name="android.support.FILE_PROVIDER_PATHS"
-46-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:34:17-67
-47                android:resource="@xml/file_paths" />
-47-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:35:17-51
-48        </provider>
-49        <provider
-49-->[androidx.emoji2:emoji2:1.0.0] /home/sarmad/.gradle/caches/transforms-3/8876b0ef355d9d3e8b47dae2b38cca4c/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
-50            android:name="androidx.startup.InitializationProvider"
-50-->[androidx.emoji2:emoji2:1.0.0] /home/sarmad/.gradle/caches/transforms-3/8876b0ef355d9d3e8b47dae2b38cca4c/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:27:13-67
-51            android:authorities="com.zype.app.androidx-startup"
-51-->[androidx.emoji2:emoji2:1.0.0] /home/sarmad/.gradle/caches/transforms-3/8876b0ef355d9d3e8b47dae2b38cca4c/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:28:13-68
-52            android:exported="false" >
-52-->[androidx.emoji2:emoji2:1.0.0] /home/sarmad/.gradle/caches/transforms-3/8876b0ef355d9d3e8b47dae2b38cca4c/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:29:13-37
-53            <meta-data
-53-->[androidx.emoji2:emoji2:1.0.0] /home/sarmad/.gradle/caches/transforms-3/8876b0ef355d9d3e8b47dae2b38cca4c/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
-54                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-54-->[androidx.emoji2:emoji2:1.0.0] /home/sarmad/.gradle/caches/transforms-3/8876b0ef355d9d3e8b47dae2b38cca4c/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:32:17-75
-55                android:value="androidx.startup" />
-55-->[androidx.emoji2:emoji2:1.0.0] /home/sarmad/.gradle/caches/transforms-3/8876b0ef355d9d3e8b47dae2b38cca4c/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:33:17-49
-56            <meta-data
-56-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/sarmad/.gradle/caches/transforms-3/31fc96d9881c54f9b47ddec530ec8052/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
-57                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-57-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/sarmad/.gradle/caches/transforms-3/31fc96d9881c54f9b47ddec530ec8052/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
-58                android:value="androidx.startup" />
-58-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/sarmad/.gradle/caches/transforms-3/31fc96d9881c54f9b47ddec530ec8052/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
-59        </provider>
-60    </application>
-61
-62</manifest>
+23        android:theme="@style/AppTheme"
+23-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:11:9-40
+24        android:usesCleartextTraffic="true" >
+24-->[:capacitor-cordova-android-plugins] /home/sarmad/my-stuff/zype/android/capacitor-cordova-android-plugins/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:18-53
+25        <activity
+25-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:13:9-26:20
+26            android:name="com.zype.app.MainActivity"
+26-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:15:13-53
+27            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+27-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:14:13-129
+28            android:exported="true"
+28-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:19:13-36
+29            android:label="@string/title_activity_main"
+29-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:16:13-56
+30            android:launchMode="singleTask"
+30-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:18:13-44
+31            android:theme="@style/AppTheme.NoActionBarLaunch" >
+31-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:17:13-62
+32            <intent-filter>
+32-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:21:13-24:29
+33                <action android:name="android.intent.action.MAIN" />
+33-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:22:17-69
+33-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:22:25-66
+34
+35                <category android:name="android.intent.category.LAUNCHER" />
+35-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:23:17-77
+35-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:23:27-74
+36            </intent-filter>
+37        </activity>
+38
+39        <provider
+40            android:name="androidx.core.content.FileProvider"
+40-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:29:13-62
+41            android:authorities="com.zype.app.fileprovider"
+41-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:30:13-64
+42            android:exported="false"
+42-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:31:13-37
+43            android:grantUriPermissions="true" >
+43-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:32:13-47
+44            <meta-data
+44-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:33:13-35:64
+45                android:name="android.support.FILE_PROVIDER_PATHS"
+45-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:34:17-67
+46                android:resource="@xml/file_paths" />
+46-->/home/sarmad/my-stuff/zype/android/app/src/main/AndroidManifest.xml:35:17-51
+47        </provider>
+48        <provider
+48-->[androidx.emoji2:emoji2:1.0.0] /home/sarmad/.gradle/caches/transforms-3/8876b0ef355d9d3e8b47dae2b38cca4c/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
+49            android:name="androidx.startup.InitializationProvider"
+49-->[androidx.emoji2:emoji2:1.0.0] /home/sarmad/.gradle/caches/transforms-3/8876b0ef355d9d3e8b47dae2b38cca4c/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:27:13-67
+50            android:authorities="com.zype.app.androidx-startup"
+50-->[androidx.emoji2:emoji2:1.0.0] /home/sarmad/.gradle/caches/transforms-3/8876b0ef355d9d3e8b47dae2b38cca4c/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:28:13-68
+51            android:exported="false" >
+51-->[androidx.emoji2:emoji2:1.0.0] /home/sarmad/.gradle/caches/transforms-3/8876b0ef355d9d3e8b47dae2b38cca4c/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:29:13-37
+52            <meta-data
+52-->[androidx.emoji2:emoji2:1.0.0] /home/sarmad/.gradle/caches/transforms-3/8876b0ef355d9d3e8b47dae2b38cca4c/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
+53                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+53-->[androidx.emoji2:emoji2:1.0.0] /home/sarmad/.gradle/caches/transforms-3/8876b0ef355d9d3e8b47dae2b38cca4c/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:32:17-75
+54                android:value="androidx.startup" />
+54-->[androidx.emoji2:emoji2:1.0.0] /home/sarmad/.gradle/caches/transforms-3/8876b0ef355d9d3e8b47dae2b38cca4c/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:33:17-49
+55            <meta-data
+55-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/sarmad/.gradle/caches/transforms-3/31fc96d9881c54f9b47ddec530ec8052/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
+56                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+56-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/sarmad/.gradle/caches/transforms-3/31fc96d9881c54f9b47ddec530ec8052/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
+57                android:value="androidx.startup" />
+57-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/sarmad/.gradle/caches/transforms-3/31fc96d9881c54f9b47ddec530ec8052/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
+58        </provider>
+59    </application>
+60
+61</manifest>

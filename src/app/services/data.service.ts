@@ -9,11 +9,13 @@ import { HttpClient } from '@angular/common/http';
 
 export class DataService {
 
+    private readonly _apiUrl = 'https://zype-backend.onrender.com';
+
     constructor(private http: HttpClient) {}
 
     public getUserFromUsername(username: string): Promise<boolean> {
         return new Promise((resolve, reject) => {
-            this.http.get<IUser>(`api/getUserByUsername/${username}`).subscribe({
+            this.http.get<IUser>(`${this._apiUrl}/getUserByUsername/${username}`).subscribe({
                 next: user => {
                     user ? resolve(true) : resolve(false);
                 }, 
@@ -24,7 +26,7 @@ export class DataService {
 
     public getUserFromUid(uid: string): Promise<IUser | null> {
         return new Promise((resolve, reject) => {
-            this.http.get<IUser>(`api/getUserById/${uid}`).subscribe({
+            this.http.get<IUser>(`${this._apiUrl}/getUserById/${uid}`).subscribe({
                 next: user => resolve(user),
                 error: err => reject(err)
             });
@@ -33,7 +35,7 @@ export class DataService {
 
     public updateUser(user: IUser): Promise<void> {
         return new Promise((resolve, reject) => {
-            this.http.post(`api/updateUser`, user).subscribe({
+            this.http.post(`${this._apiUrl}/updateUser`, user).subscribe({
                 next: () => resolve(),
                 error: err => reject(err)
             });
@@ -42,7 +44,7 @@ export class DataService {
 
     public updateUserAnalytics(user: IUser): Promise<void> {
         return new Promise((resolve, reject) => {
-            this.http.post(`api/updateUserAnalytics`, user).subscribe({
+            this.http.post(`${this._apiUrl}/updateUserAnalytics`, user).subscribe({
                 next: () => resolve(),
                 error: err => reject(err)
             });
@@ -52,7 +54,7 @@ export class DataService {
     public createUserDoc(email: string, username: string, uid: string): Promise<IUser> {
         return new Promise((resolve, reject) => {
             const newUser: IUser = generateNewUser(email, username, uid);
-            this.http.post(`api/createUser`, newUser).subscribe({
+            this.http.post(`${this._apiUrl}/createUser`, newUser).subscribe({
                 next: () => resolve(newUser),
                 error: err => reject(err)
             });

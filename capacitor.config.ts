@@ -6,7 +6,6 @@ const config: CapacitorConfig = {
   webDir: 'dist/zype-app',
   bundledWebRuntime: false,
   "server": {
-    "url": "http://192.168.1.102:4200",
     "cleartext": true
   },
   
