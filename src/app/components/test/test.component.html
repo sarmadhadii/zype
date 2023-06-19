@@ -1,10 +1,11 @@
 <div class="background-box blue-grey-bg"></div>
 
 <ng-container *ngIf="!showResults">
-    <div class="words-wrapper" (click)="selectInputField()">
+    <div class="words-wrapper position-relative" (click)="selectInputField()">
         <span class="single-word" *ngFor="let word of currentWordList; let i = index" [class.active-word]="i === currentIndex">
             {{word}}
         </span>
+        <app-guide-step *ngIf="(guideService?.guideConfig?.showing && guideService?.guideConfig?.currentStep! < 2)"></app-guide-step>
     </div>
     
     <div class="current-word-input-wrapper">
@@ -28,7 +29,7 @@
 
     <label class="current-letters-label mb-2">
         Current Letters ({{activeLetters.length || 0}})
-        <i class="pi pi-info-circle" tooltipStyleClass="z-tooltip" pInputText pTooltip="The vertical progress bar represents your accuracy on each alphabet" tooltipEvent="focus" tabindex="0" tooltipPosition="top"></i>
+        <i class="pi pi-info-circle" tooltipStyleClass="z-tooltip" pInputText pTooltip="Clicking on an alphabet will show it's stats. The vertical progress bar represents your accuracy on each alphabet" tooltipEvent="focus" tabindex="0" tooltipPosition="top"></i>
     </label>
     <div class="active-letters-wrapper" [class.letters-disabled]="(commonService.testInProgress$ | async)">
         <ng-container *ngFor="let letter of activeLetters;">
@@ -46,7 +47,7 @@
 
     <label class="current-letters-label mt-4 mb-2">
         Progress to next alphabet
-        <i class="pi pi-info-circle" tooltipStyleClass="z-tooltip" pInputText pTooltip="This bar represents your progress towards unlocking the next alphabet" tooltipEvent="focus" tabindex="0" tooltipPosition="top"></i>
+        <i class="pi pi-info-circle" tooltipStyleClass="z-tooltip" pInputText pTooltip="This bar represents your progress towards unlocking the next alphabet. In order to unlock an alphabet, all existing alphabets must have > 75% accuracy and  at least 250 attempts." tooltipEvent="focus" tabindex="0" tooltipPosition="top"></i>
     </label>
     <div class="progress-till-next-letter-wrapper z-progressbar">
         <p-progressBar [value]="progressTillNextLetter"></p-progressBar>

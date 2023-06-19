@@ -90,7 +90,6 @@ export const fullAlphabet: string = 'etaoinsrhldcwypgvkbmzfuxjq';
 export const startingLetters: string[] = ['e', 't', 'a', 'o', 'i', 'n'];
 
 export const forbiddenWords: { [key: string]: boolean } = {
-    'bbbe': true,
-    'ooo': true,
     'tit': true,
+    'shit': true
 };

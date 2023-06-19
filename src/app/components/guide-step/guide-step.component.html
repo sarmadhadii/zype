@@ -1,0 +1,9 @@
+<div class="z-guide-step  off-white-bg">
+    <div class="guide-header bitter blue-grey">
+        {{guideService.guideConfig.steps[guideService.guideConfig.currentStep].header}}
+    </div>
+    <div class="guide-description open-sans dark-grey">
+        {{guideService.guideConfig.steps[guideService.guideConfig.currentStep].description}}
+    </div>
+    <button class="guide-next-button z-button dark-grey-bg off-white" (click)="guideService.nextStep()">{{(guideService.guideConfig.currentStep < guideService.guideConfig.steps.length) ? 'Next' : 'Finish'}}</button>
+</div>

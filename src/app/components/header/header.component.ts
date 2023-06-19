@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { faBars, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { ConfirmationService } from 'primeng/api';
 import { AuthService } from 'src/app/services/auth.service';
 import { CommonService } from 'src/app/services/common.service';
+import { GuideService } from 'src/app/services/guide.service';
 import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
@@ -19,7 +19,8 @@ export class HeaderComponent {
         public authService: AuthService,
         public loaderService: LoaderService,
         public primengConfirmService: ConfirmationService,
-        public commonService: CommonService
+        public commonService: CommonService,
+        public guideService: GuideService
     ){ }
 
 
@@ -31,5 +32,9 @@ export class HeaderComponent {
                 this.authService.logout();
             }
         })
+    }
+
+    public startGuide(): void {
+        this.guideService.startGuide();
     }
 }
