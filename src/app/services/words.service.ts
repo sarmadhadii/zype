@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { generalSourceText, letterDominantSourceTexts } from '../shared/source-texts';
-import { fullAlphabet } from '../shared/utils';
+import { forbiddenWords, fullAlphabet } from '../shared/utils';
 
 @Injectable({
     providedIn: 'root'
@@ -50,7 +50,7 @@ export class WordsService {
                     Math.floor(Math.random() * markovChain[currentLetter].length)
                     ];
             }
-            if (word.length >= 3 && word !== words?.[words.length - 1]) {
+            if (word.length >= 3 && word !== words?.[words.length - 1] && forbiddenWords?.[word] !== true) {
                 words.push(word);
                 totalLength += word.length + 1;
             }

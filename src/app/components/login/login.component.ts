@@ -33,20 +33,18 @@ export class LoginComponent {
                 this.goToTest();
                 this.loaderService.stopLoading();
             }).catch(err => {
-                console.error(err.code);
+                console.error(err.message);
                 const message = this.formatError(err.code);
                 this.loaderService.stopLoading();
                 this.messagesService.showMessage(message, 'error', true);
             });
 
         } else {
-            this.authService.signUp(this.formInput.email, this.formInput.password, this.formInput.username).catch(err => {
-                console.error(err.message);
-            }).then(() => {
+            this.authService.signUp(this.formInput.email, this.formInput.password, this.formInput.username).then(() => {
                 this.goToTest();
                 this.loaderService.stopLoading();
             }).catch(err => {
-                console.error(err.code);
+                console.error(err.message);
                 const message = this.formatError(err.code);
                 this.loaderService.stopLoading();
                 this.messagesService.showMessage(message, 'error', true);

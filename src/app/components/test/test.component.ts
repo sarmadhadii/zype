@@ -1,13 +1,14 @@
-import { Component, OnInit, ViewChild, asNativeElements } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { faArrowRight, faRepeat } from '@fortawesome/free-solid-svg-icons';
-import { Observable, generate, takeWhile, tap, timer } from 'rxjs';
+import { takeWhile, tap, timer } from 'rxjs';
 import { IConfidence } from 'src/app/interfaces/confidence';
 import { CommonService } from 'src/app/services/common.service';
 import { DataService } from 'src/app/services/data.service';
+import { GuideService } from 'src/app/services/guide.service';
 import { LoaderService } from 'src/app/services/loader.service';
 import { UserService } from 'src/app/services/user.service';
 import { WordsService } from 'src/app/services/words.service';
-import { fullAlphabet, generateConfidences, recursiveDeepCopy, startingLetters, toTwoDecimalPlaces } from 'src/app/shared/utils';
+import { fullAlphabet, generateConfidences, startingLetters } from 'src/app/shared/utils';
 
 @Component({
   selector: 'app-test',
@@ -51,7 +52,8 @@ export class TestComponent implements OnInit {
         public userService: UserService,
         public loaderService: LoaderService,
         public dataService: DataService,
-        public commonService: CommonService
+        public commonService: CommonService,
+        public guideService: GuideService
     ) {
         this.loaderService.stopLoading();
     }
@@ -224,7 +226,7 @@ export class TestComponent implements OnInit {
         this.userService.user.analytics.played++;
 
         //checking if new score needs to be added to analytics
-        if (this.userService.user.analytics.played % 25 === 0) {
+        if (this.userService.user.analytics.played % 10 === 0) {
             this.userService.user.analytics.scores.push({
                 date: new Date(),
                 speed: this.userService.user.analytics.averageSpeed,

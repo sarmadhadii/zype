@@ -8,4 +8,5 @@ export const environment = {
         messagingSenderId: '916773105164',
         measurementId: 'G-46856SM660',
     },
+    apiURL: 'https://zype-backend.onrender.com',
 };

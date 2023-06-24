@@ -1,8 +1,7 @@
 import { provideAuth, getAuth } from '@angular/fire/auth';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
-import { FirebaseApp, firebaseApp$, provideFirebaseApp } from '@angular/fire/app';
+import { provideFirebaseApp } from '@angular/fire/app';
 import { initializeApp } from 'firebase/app';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -27,6 +26,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { NumberSuffixPipe } from './pipes/number-suffix.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { GuideStepComponent } from './components/guide-step/guide-step.component';
 
 
 
@@ -34,7 +34,6 @@ import { ProgressBarModule } from 'primeng/progressbar';
     imports: [
         provideFirebaseApp(() => initializeApp(environment.firebase)),
         provideAuth(() => getAuth()),
-        provideFirestore(() => getFirestore()),
         BrowserModule,
         AppRoutingModule,
         FontAwesomeModule,
@@ -56,7 +55,8 @@ import { ProgressBarModule } from 'primeng/progressbar';
         LoaderComponent,
         TestComponent,
         LetterConfidenceComponent,
-        NumberSuffixPipe
+        NumberSuffixPipe,
+        GuideStepComponent
     ],
     bootstrap: [AppComponent],
     providers: [

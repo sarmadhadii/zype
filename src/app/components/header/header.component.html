@@ -14,5 +14,9 @@
             Logout
             <fa-icon [icon]="faLogout"></fa-icon>
         </button>
+        <button (click)="headerOverlayPanel.hide(); startGuide();" class="z-button off-white-bg dark-grey">
+            Quick Guide
+            <fa-icon [icon]="faQuestion"></fa-icon>
+        </button>
     </div>
 </p-overlayPanel>
