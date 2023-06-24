@@ -1,7 +1,7 @@
 <div class="background-box blue-grey-bg"></div>
 
 <ng-container *ngIf="!showResults">
-    <div class="words-wrapper position-relative" (click)="selectInputField()">
+    <div class="words-wrapper position-relative" [class.z-bg-overlay]="guideService.guideConfig.currentStep! === 1" (click)="selectInputField()">
         <span class="single-word" *ngFor="let word of currentWordList; let i = index" [class.active-word]="i === currentIndex">
             {{word}}
         </span>
@@ -10,16 +10,18 @@
     
     <div class="current-word-input-wrapper">
         <label for="current-word">Click here and start typing</label>
-        <div class="current-word-input">
+        <div class="current-word-input" [class.z-bg-overlay]="guideService.guideConfig.currentStep! === 2">
             <input *ngIf="currentWordList?.[currentIndex]" autofocus type="text" inputmode="text" id="word-input-field" #inputField autocorrect="off" autocomplete="false" autocapitalize="off" name="current-word" [(ngModel)]="currentWordInput" (ngModelChange)="currentWordInputChanged()">
             <span class="current-word-text z-shadow" (click)="selectInputField()" [innerHTML]="currentWordHTML"></span>
             <span class="next-word-text" *ngIf="currentWordList?.[currentIndex + 1] || ((currentWordList.length -  currentIndex === 1) && nextWordList[0])">
                 {{currentWordList[currentIndex + 1] || nextWordList[0]}}
             </span>
+            <app-guide-step *ngIf="(guideService?.guideConfig?.showing && guideService?.guideConfig?.currentStep! === 2)"></app-guide-step>
         </div>
     </div>
 
-    <div class="lower-info-wrapper d-flex justify-content-center align-items-center">
+    <div class="lower-info-wrapper d-flex justify-content-center align-items-center position-relative" [class.z-bg-overlay]="guideService.guideConfig.currentStep! === 3">
+        <app-guide-step *ngIf="(guideService?.guideConfig?.showing && guideService?.guideConfig?.currentStep! === 3)"></app-guide-step>
         <div class="timer-wrapper dark-grey">{{timerValue}}<span class="timer-seconds">s</span></div>
         <div class="info-wrapper dark-grey d-flex flex-column">
             <div class="single-value accuracy-value">Accuracy: {{(currentTestScore.totalCorrectlyAttemptedAlphabets / currentTestScore.totalAttemptedAlphabets | percent) || '0%' }}</div>
@@ -31,7 +33,8 @@
         Current Letters ({{activeLetters.length || 0}})
         <i class="pi pi-info-circle" tooltipStyleClass="z-tooltip" pInputText pTooltip="Clicking on an alphabet will show it's stats. The vertical progress bar represents your accuracy on each alphabet" tooltipEvent="focus" tabindex="0" tooltipPosition="top"></i>
     </label>
-    <div class="active-letters-wrapper" [class.letters-disabled]="(commonService.testInProgress$ | async)">
+    <div class="active-letters-wrapper position-relative" [class.z-bg-overlay]="guideService.guideConfig.currentStep! === 4" [class.letters-disabled]="(commonService.testInProgress$ | async)">
+        <app-guide-step *ngIf="(guideService?.guideConfig?.showing && guideService?.guideConfig?.currentStep! === 4)"></app-guide-step>
         <ng-container *ngFor="let letter of activeLetters;">
             <div class="letter-wrapper d-flex align-items-stretch" *ngIf="userService?.user?.analytics?.letterConfidences?.[letter] as letterConfidence;">
                 <span class="letter-span blue-grey-bg bitter" (click)="showLetterConfidenceSidebar(letter)">
@@ -49,7 +52,8 @@
         Progress to next alphabet
         <i class="pi pi-info-circle" tooltipStyleClass="z-tooltip" pInputText pTooltip="This bar represents your progress towards unlocking the next alphabet. In order to unlock an alphabet, all existing alphabets must have > 75% accuracy and  at least 250 attempts." tooltipEvent="focus" tabindex="0" tooltipPosition="top"></i>
     </label>
-    <div class="progress-till-next-letter-wrapper z-progressbar">
+    <div class="progress-till-next-letter-wrapper z-progressbar position-relative" [class.z-bg-overlay]="guideService.guideConfig.currentStep! === 5">
+        <app-guide-step *ngIf="(guideService?.guideConfig?.showing && guideService?.guideConfig?.currentStep! === 5)"></app-guide-step>
         <p-progressBar [value]="progressTillNextLetter"></p-progressBar>
     </div>
 </ng-container>

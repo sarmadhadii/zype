@@ -1,9 +1,16 @@
-<div class="z-guide-step  off-white-bg">
-    <div class="guide-header bitter blue-grey">
-        {{guideService.guideConfig.steps[guideService.guideConfig.currentStep].header}}
+<div *ngIf="guideService.guideConfig.steps[guideService.guideConfig.currentStep] as currentStep" [class.z-bg-overlay]="guideService.guideConfig.currentStep! === 0" class="z-guide-step {{currentStep.styleClass ? currentStep.styleClass : ''}} arrow-{{currentStep.arrowType}} off-white-bg">
+    <div class="d-flex justify-content-between align-items-center guide-top-wrapper">
+        <div class="guide-header bitter blue-grey">
+            {{currentStep.header}}
+        </div>
+        <div class="guide-close-wrapper">
+            <fa-icon class="dark-grey" style="font-size: 20px !important;" (click)="guideService.closeAndResetGuide()" [icon]="faTimes"></fa-icon>
+        </div>
     </div>
     <div class="guide-description open-sans dark-grey">
-        {{guideService.guideConfig.steps[guideService.guideConfig.currentStep].description}}
+        {{currentStep.description}}
     </div>
-    <button class="guide-next-button z-button dark-grey-bg off-white" (click)="guideService.nextStep()">{{(guideService.guideConfig.currentStep < guideService.guideConfig.steps.length) ? 'Next' : 'Finish'}}</button>
+    <div class="guide-button-wrapper">
+        <button class="{{guideService.guideConfig.currentStep === 5 ? 'guide-done-button' : 'guide-next-button'}} z-button dark-grey-bg off-white" (click)="guideService.nextStep()">{{(guideService.guideConfig.currentStep === 5) ? 'Done' : 'Next'}}</button>
+    </div>
 </div>

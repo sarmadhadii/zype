@@ -7,17 +7,41 @@
     z-index: 99999999;
     left: 0;
     padding: 10px 20px;
-    box-shadow: 0 0 0 99999px rgba(0, 0, 0, 0.4);
 
-    &::before {
+    &.left-5 {
+        left: 5vw !important;
+    }
+   
+    &.top-100 {
+        top: calc(100% + 8px) !important;
+    }
+
+    &.bottom-100 {
+        bottom: calc(100% + 8px) !important;
+    }
+
+    &.arrow-top::before {
         content: '';
         width: 0; 
         height: 0; 
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-bottom: 8px solid $off-white;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid $off-white;
         position: absolute;
         top: -8px;
+        left: calc(45vw - 10px);
+    }
+    
+    &.arrow-bottom::before {
+        content: '';
+        width: 0; 
+        height: 0; 
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid $off-white;
+        position: absolute;
+        bottom: -8px;
+        left: calc(45vw - 10px);
     }
 
     .guide-header {
@@ -31,10 +55,17 @@
         width: 100%;
         font-size: 14px;
         text-align: left;
-        margin: 10px 0;
+        margin: 8px 0 22px;
     }
 
-    .guide-next-button {
-        float: right;
+    
+    .guide-button-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        .guide-done-button {
+            margin: auto;
+            justify-self: center;
+        }
     }
 }
