@@ -93,6 +93,23 @@
     fa-icon {
         margin-left: 6px;
     }
+
+    &.space-between {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.z-button-small {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    height: 26px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: "Bitter";
+    padding: 0 10px;
 }
 
 .z-toast {
@@ -123,9 +140,12 @@
     top: 45px !important;
     left: auto !important;
     right: 25px !important;
-    background-color: $off-white !important;
     &::before, &::after {
         display: none;
+    }
+
+    .z-button {
+        background-color: white;
     }
 
     .p-overlaypanel-content {
@@ -211,4 +231,21 @@
     z-index: 999999 !important;
 }
 
+
+.alphabets-table-wrapper {
+    th {
+        font-size: 13px;
+        padding-top: 7px !important;
+        padding-bottom: 7px !important;
+        color: $off-white !important;
+        background-color: $dark-grey !important;
+    }
+
+    td {
+        font-size: 13px;
+        padding-top: 7px !important;
+        padding-bottom: 7px !important;
+        background-color: white !important;
+    }
+}
 

@@ -1,4 +1,4 @@
-.whole-wrapper {
+.header-whole-wrapper {
     width: 100vw;
     height: 70px;
     display: flex;
@@ -9,9 +9,9 @@
     top: 0;
 
     .logo-wrapper {
-        font-size: 38px;
-        font-family: 'Bitter';
-        font-weight: 500;
+        img {
+            height: 55px;
+        }
     }
 
     fa-icon {

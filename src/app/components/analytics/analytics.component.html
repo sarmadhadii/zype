@@ -1,0 +1,74 @@
+<div class="whole-wrapper off-white-bg">
+    <ng-container *ngIf="!currentActiveAlphabet else activeLetter;">
+        <div class="headings-wrapper">
+            <h1 class="analytics-header dark-grey bitter">
+                My Analytics
+            </h1>
+            <h2 class="analytics-subheader dark-grey bitter">
+                This page shows your stats and analytics. Check out your overall stats, or browse letter specific data.
+            </h2>
+        </div>
+    
+        <div class="data-wrapper chart-whole-wrapper" *ngIf="(data && options) else notEnoughData">
+            <div class="chart-headings-wrapper">
+                <span class="chart-header open-sans dark-grey">
+                    Average speed
+                </span>
+                <span class="chart-subheader open-sans dark-grey">
+                    Snapshots of your average speed are saved after every 10 tests
+                </span>
+            </div>
+            <p-chart type="line" [data]="data" [options]="options"></p-chart>
+        </div>
+        <ng-template #notEnoughData>
+            <div class="chart-whole-wrapper">
+                <div class="chart-headings-wrapper">
+                    <span class="chart-header open-sans dark-grey">
+                        No data to display
+                    </span>
+                    <span class="chart-subheader open-sans dark-grey">
+                        Snapshots of your average speed are saved after every 10 tests. You need at least 20 tests to see a
+                        graph.
+                    </span>
+                </div>
+            </div>
+        </ng-template>
+    
+        <div class="data-wrapper table-whole-wrapper">
+    
+            <div class="alphabets-table-wrapper my-5">
+                <p-table [value]="alphabetsData" [tableStyle]="{ 'min-width': '100vw', 'max-width': '100vw' }">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th class="bitter">Letter</th>
+                            <th class="bitter">Acc.</th>
+                            <th class="bitter">Progress</th>
+                            <th class="bitter"></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-alphabet>
+                        <tr>
+                            <td>{{ alphabet.alphabet }}</td>
+                            <td>{{ alphabet.accuracy }}</td>
+                            <td>{{ alphabet.performance }}</td>
+                            <td>
+                                <button (click)="currentActiveAlphabet = alphabet.alphabet;" class="z-button-small blue-grey-bg off-white">
+                                    more
+                                </button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #activeLetter>
+        <button class="z-button blue-grey-bg off-white mt-2 mx-2" (click)="currentActiveAlphabet = null;">
+            Back
+            <fa-icon [icon]="faReturn"></fa-icon>
+        </button>
+        <app-letter-stats [letter]="currentActiveAlphabet!"></app-letter-stats>
+    </ng-template>
+   
+</div>

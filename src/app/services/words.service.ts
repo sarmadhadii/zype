@@ -50,12 +50,25 @@ export class WordsService {
                     Math.floor(Math.random() * markovChain[currentLetter].length)
                     ];
             }
-            if (word.length >= 3 && word !== words?.[words.length - 1] && forbiddenWords?.[word] !== true) {
+            if (word.length >= 3 && word !== words?.[words.length - 1] && forbiddenWords?.[word] !== true && !this.hasThreeConsecutiveLettersFromSameAlphabet(word)) {
                 words.push(word);
                 totalLength += word.length + 1;
             }
         } while ((totalLength <= 36));
 
         return words;
+    }
+
+    /**
+     *  Returns true if word has three or more consecutive letters from the same alphabet 
+    */
+    public hasThreeConsecutiveLettersFromSameAlphabet(word: string): boolean {
+        const alphabets = word.split('').reduce((acc: any, letter: string) => {
+            if (!acc[letter]) acc[letter] = 0;
+            acc[letter]++;
+            return acc;
+        }, {});
+
+        return (Object.values(alphabets) as any[]).some((count: number) => (count >= 3) ? true : false);
     }
 }

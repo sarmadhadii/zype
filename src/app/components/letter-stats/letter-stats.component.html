@@ -1,0 +1,33 @@
+<div class="headings-wrapper">
+    <h1 class="analytics-header dark-grey bitter">
+        My Analytics
+    </h1>
+    <h2 class="analytics-subheader dark-grey bitter">
+        This page shows your stats and analytics. Check out your overall stats, or browse letter specific data.
+    </h2>
+</div>
+
+<div class="data-wrapper chart-whole-wrapper" *ngIf="(data && options) else notEnoughData">
+    <div class="chart-headings-wrapper">
+        <span class="chart-header open-sans dark-grey">
+            Average speed
+        </span>
+        <span class="chart-subheader open-sans dark-grey">
+            Snapshots of your average speed are saved after every 10 tests
+        </span>
+    </div>
+    <p-chart type="line" [data]="data" [options]="options"></p-chart>
+</div>
+<ng-template #notEnoughData>
+    <div class="chart-whole-wrapper">
+        <div class="chart-headings-wrapper">
+            <span class="chart-header open-sans dark-grey">
+                No data to display
+            </span>
+            <span class="chart-subheader open-sans dark-grey">
+                Snapshots of your average speed are saved after every 10 tests. You need at least 20 tests to see a
+                graph.
+            </span>
+        </div>
+    </div>
+</ng-template>

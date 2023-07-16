@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IConfidence } from 'src/app/interfaces/confidence';
+import { CommonService } from 'src/app/services/common.service';
 import { MessagesService } from 'src/app/services/messages.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -16,13 +17,14 @@ export class LetterConfidenceComponent {
 
     constructor(
         public userService: UserService,
-        public messagesService: MessagesService
+        public messagesService: MessagesService,
+        public commonService: CommonService
     ) { }
 
     ngOnInit(): void {
         if (this.userService?.user?.analytics?.letterConfidences?.[this.letter]) {
             this.letterData = this.userService.user.analytics.letterConfidences[this.letter];
-            this.accuracyPercentage = Math.floor((this.letterData.successfulAttempts / this.letterData.attemptedAmount) * 100)
+            this.accuracyPercentage = this.commonService.getAccuracyFromLetter(this.letterData);
         } else {
             this.messagesService.showMessage(`Alphabet '${this.letter}' does not have any data`, 'error', true);
         }

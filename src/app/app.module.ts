@@ -27,6 +27,10 @@ import { NumberSuffixPipe } from './pipes/number-suffix.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { GuideStepComponent } from './components/guide-step/guide-step.component';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
+import { ChartModule } from 'primeng/chart';
+import { TableModule } from 'primeng/table';
+import { LetterStatsComponent } from './components/letter-stats/letter-stats.component';
 
 
 
@@ -45,7 +49,9 @@ import { GuideStepComponent } from './components/guide-step/guide-step.component
         SidebarModule,
         TooltipModule,
         HttpClientModule,
-        ProgressBarModule
+        ProgressBarModule,
+        ChartModule,
+        TableModule
     ],
     declarations: [
         AppComponent,
@@ -56,7 +62,9 @@ import { GuideStepComponent } from './components/guide-step/guide-step.component
         TestComponent,
         LetterConfidenceComponent,
         NumberSuffixPipe,
-        GuideStepComponent
+        GuideStepComponent,
+        AnalyticsComponent,
+        LetterStatsComponent
     ],
     bootstrap: [AppComponent],
     providers: [

@@ -1,6 +1,9 @@
 
-<div class="whole-wrapper dark-grey-bg">
-    <div class="logo-wrapper pointer off-white">ZYPE</div>
+<div class="header-whole-wrapper dark-grey-bg">
+    <div class="logo-wrapper pointer off-white">
+        <img src="../../../assets/images/main-logo.png" alt="">
+    
+    </div>
     <fa-icon class="off-white pointer" (click)="headerOverlayPanel.toggle($event)" [icon]="faBars" *ngIf="
         (authService?.loggedInUser$ | async) && 
         !loaderService.loading && 
@@ -10,13 +13,21 @@
 </div>
 <p-overlayPanel #headerOverlayPanel styleClass="header-overlay-panel">
     <div class="options-wrapper d-flex flex-column">
-        <button (click)="confirmLogout();" class="z-button off-white-bg dark-grey">
-            Logout
-            <fa-icon [icon]="faLogout"></fa-icon>
+        <button *ngIf="currentPage !== '/' && currentPage !== '/test'" class="z-button space-between dark-grey" (click)="headerOverlayPanel.hide();" routerLink="/test">
+            Home
+            <fa-icon [icon]="faHome"></fa-icon>
         </button>
-        <button (click)="headerOverlayPanel.hide(); startGuide();" class="z-button off-white-bg dark-grey">
+        <button *ngIf="currentPage === '/' || currentPage === '/test'" (click)="headerOverlayPanel.hide(); startGuide();" class="z-button space-between dark-grey">
             Quick Guide
             <fa-icon [icon]="faQuestion"></fa-icon>
+        </button>
+        <button *ngIf="currentPage === '/' || currentPage === '/test'" class="z-button space-between dark-grey" (click)="headerOverlayPanel.hide();" routerLink="/analytics">
+            Analytics
+            <fa-icon [icon]="faChartLine"></fa-icon>
+        </button>
+        <button (click)="confirmLogout();" class="z-button space-between dark-grey">
+            Logout
+            <fa-icon [icon]="faLogout"></fa-icon>
         </button>
     </div>
 </p-overlayPanel>
